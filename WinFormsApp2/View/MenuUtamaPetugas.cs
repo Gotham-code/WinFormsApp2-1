@@ -8,16 +8,11 @@ using System.Windows.Forms;
 
 namespace WinFormsApp2.View
 {
-    public partial class MenuUtama : Form
+    public partial class MenuUtamaPetugas : Form
     {
-        public MenuUtama()
+        public MenuUtamaPetugas()
         {
             InitializeComponent();
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void label1_Click(object sender, EventArgs e)

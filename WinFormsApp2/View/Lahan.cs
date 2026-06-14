@@ -1,23 +1,86 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
+using MonitoringKopiKakao.Controller;
 
 namespace WinFormsApp2.View
 {
     public partial class Lahan : Form
     {
+        private LahanController controller;
+
+        public ComboBox cboJenisTanah => cmbJenis;
+
         public Lahan()
         {
             InitializeComponent();
+            // Menginisialisasi controller dengan melemparkan form ini (this)
+            controller = new LahanController(this);
         }
 
         private void Lahan_Load(object sender, EventArgs e)
         {
+            // Tambahkan pilihan jenis tanah jika masih kosong
+            if (cmbJenis.Items.Count == 0)
+            {
+                cmbJenis.Items.Add("Tanah Liat");
+                cmbJenis.Items.Add("Tanah Berpasir");
+                cmbJenis.Items.Add("Tanah Humus");
+                cmbJenis.Items.Add("Tanah Aluvial");
+                cmbJenis.Items.Add("Tanah Vulkanik");
+            }
 
+            controller.TampilData();
+            ResetForm();
+        }
+
+        private void btnSimpan_Click(object sender, EventArgs e)
+        {
+            controller.Simpan();
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            controller.Ubah();
+        }
+
+        private void btnHapus_Click(object sender, EventArgs e)
+        {
+            controller.Hapus();
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            ResetForm();
+        }
+
+        public void ResetForm()
+        {
+            txtIdLahan.Clear();
+            txtLokasi.Clear();
+            txtLuas.Clear();
+            if (cmbJenis.Items.Count > 0) cmbJenis.SelectedIndex = 0;
+
+            btnSimpan.Enabled = true;
+            btnEdit.Enabled = false;
+            btnHapus.Enabled = false;
+        }
+
+        // Event saat salah satu baris di Grid diklik oleh user
+        private void dgvLahan_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dgvLahan.Rows[e.RowIndex];
+                txtIdLahan.Text = row.Cells["ID"].Value.ToString();
+                txtLokasi.Text = row.Cells["Lokasi"].Value.ToString();
+                txtLuas.Text = row.Cells["Luas (Ha)"].Value.ToString();
+                cmbJenis.SelectedItem = row.Cells["Jenis Tanah"].Value.ToString();
+
+                // Ubah status tombol pintas
+                btnSimpan.Enabled = false;
+                btnEdit.Enabled = true;
+                btnHapus.Enabled = true;
+            }
         }
     }
 }

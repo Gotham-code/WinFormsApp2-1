@@ -30,38 +30,32 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Laporan));
             txtPetugas = new TextBox();
-            txtTanggal = new TextBox();
             cmbJenis = new ComboBox();
             btnTampilkanLaporan = new Button();
             btnPetugas = new Button();
             dgvLaporan = new DataGridView();
+            periodeawal = new DateTimePicker();
+            dateTimePicker1 = new DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)dgvLaporan).BeginInit();
             SuspendLayout();
             // 
             // txtPetugas
             // 
-            txtPetugas.Location = new Point(188, 59);
+            txtPetugas.Location = new Point(44, 59);
             txtPetugas.Name = "txtPetugas";
+            txtPetugas.PlaceholderText = "Nama Petugas";
             txtPetugas.Size = new Size(125, 27);
             txtPetugas.TabIndex = 2;
-            txtPetugas.Text = "Petugas";
-            // 
-            // txtTanggal
-            // 
-            txtTanggal.Location = new Point(44, 59);
-            txtTanggal.Name = "txtTanggal";
-            txtTanggal.Size = new Size(125, 27);
-            txtTanggal.TabIndex = 3;
-            txtTanggal.Text = "Tanggal";
             // 
             // cmbJenis
             // 
             cmbJenis.FormattingEnabled = true;
+            cmbJenis.Items.AddRange(new object[] { "Kopi", "Kakao" });
             cmbJenis.Location = new Point(44, 112);
             cmbJenis.Name = "cmbJenis";
             cmbJenis.Size = new Size(125, 28);
             cmbJenis.TabIndex = 4;
-            cmbJenis.Text = "Jenis";
+            cmbJenis.Text = "Jenis Tanaman";
             // 
             // btnTampilkanLaporan
             // 
@@ -90,6 +84,20 @@
             dgvLaporan.Size = new Size(521, 218);
             dgvLaporan.TabIndex = 7;
             // 
+            // periodeawal
+            // 
+            periodeawal.Location = new Point(253, 59);
+            periodeawal.Name = "periodeawal";
+            periodeawal.Size = new Size(250, 27);
+            periodeawal.TabIndex = 8;
+            // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.Location = new Point(253, 112);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(250, 27);
+            dateTimePicker1.TabIndex = 9;
+            // 
             // Laporan
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -97,11 +105,12 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(632, 450);
+            Controls.Add(dateTimePicker1);
+            Controls.Add(periodeawal);
             Controls.Add(dgvLaporan);
             Controls.Add(btnPetugas);
             Controls.Add(btnTampilkanLaporan);
             Controls.Add(cmbJenis);
-            Controls.Add(txtTanggal);
             Controls.Add(txtPetugas);
             DoubleBuffered = true;
             Name = "Laporan";
@@ -114,12 +123,13 @@
         #endregion
 
         private TextBox txtPetugas;
-        private TextBox txtTanggal;
         private ComboBox cmbJenis;
         private Button button1;
         private Button button2;
         private Button btnTampilkanLaporan;
         private Button btnPetugas;
         private DataGridView dgvLaporan;
+        private DateTimePicker periodeawal;
+        private DateTimePicker dateTimePicker1;
     }
 }

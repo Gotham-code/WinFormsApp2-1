@@ -33,7 +33,6 @@
             txtPassword = new TextBox();
             txtUsername = new TextBox();
             txtNama = new TextBox();
-            btnTambah = new Button();
             btnSimpan = new Button();
             btnEdit = new Button();
             btnHapus = new Button();
@@ -45,42 +44,33 @@
             // 
             txtRole.Location = new Point(327, 111);
             txtRole.Name = "txtRole";
+            txtRole.PlaceholderText = "Role (Admin/Petugas)";
             txtRole.Size = new Size(125, 27);
             txtRole.TabIndex = 0;
-            txtRole.Text = "Role";
             // 
             // txtPassword
             // 
             txtPassword.Location = new Point(326, 78);
             txtPassword.Name = "txtPassword";
+            txtPassword.PlaceholderText = "Masukkan Password";
             txtPassword.Size = new Size(125, 27);
             txtPassword.TabIndex = 1;
-            txtPassword.Text = "Passsword";
             // 
             // txtUsername
             // 
             txtUsername.Location = new Point(65, 111);
             txtUsername.Name = "txtUsername";
+            txtUsername.PlaceholderText = "Masukkan Username";
             txtUsername.Size = new Size(125, 27);
             txtUsername.TabIndex = 2;
-            txtUsername.Text = "Username";
             // 
             // txtNama
             // 
             txtNama.Location = new Point(64, 78);
             txtNama.Name = "txtNama";
+            txtNama.PlaceholderText = "Masukkan Nama Lengkap";
             txtNama.Size = new Size(125, 27);
             txtNama.TabIndex = 3;
-            txtNama.Text = "Nama";
-            // 
-            // btnTambah
-            // 
-            btnTambah.Location = new Point(79, 155);
-            btnTambah.Name = "btnTambah";
-            btnTambah.Size = new Size(94, 29);
-            btnTambah.TabIndex = 4;
-            btnTambah.Text = "Tambah";
-            btnTambah.UseVisualStyleBackColor = true;
             // 
             // btnSimpan
             // 
@@ -88,8 +78,9 @@
             btnSimpan.Name = "btnSimpan";
             btnSimpan.Size = new Size(94, 29);
             btnSimpan.TabIndex = 5;
-            btnSimpan.Text = "SImpan";
+            btnSimpan.Text = "Simpan";
             btnSimpan.UseVisualStyleBackColor = true;
+            btnSimpan.Click += btnSimpan_Click;
             // 
             // btnEdit
             // 
@@ -99,6 +90,7 @@
             btnEdit.TabIndex = 6;
             btnEdit.Text = "Edit";
             btnEdit.UseVisualStyleBackColor = true;
+            btnEdit.Click += btnEdit_Click;
             // 
             // btnHapus
             // 
@@ -108,6 +100,7 @@
             btnHapus.TabIndex = 7;
             btnHapus.Text = "Hapus";
             btnHapus.UseVisualStyleBackColor = true;
+            btnHapus.Click += btnHapus_Click;
             // 
             // dgvDataPetugas
             // 
@@ -117,6 +110,7 @@
             dgvDataPetugas.RowHeadersWidth = 51;
             dgvDataPetugas.Size = new Size(552, 222);
             dgvDataPetugas.TabIndex = 8;
+            dgvDataPetugas.CellClick += DataGridPetugas_CellClick;
             // 
             // DataPetugas
             // 
@@ -129,7 +123,6 @@
             Controls.Add(btnHapus);
             Controls.Add(btnEdit);
             Controls.Add(btnSimpan);
-            Controls.Add(btnTambah);
             Controls.Add(txtNama);
             Controls.Add(txtUsername);
             Controls.Add(txtPassword);
@@ -137,8 +130,8 @@
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.None;
             Name = "DataPetugas";
-            Text = "DataPetugascs";
-            Load += DataPetugascs_Load;
+            Text = "DataPetugas";
+            Load += DataPetugas_Load;
             ((System.ComponentModel.ISupportInitialize)dgvDataPetugas).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -146,14 +139,13 @@
 
         #endregion
 
-        private TextBox txtRole;
-        private TextBox txtPassword;
-        private TextBox txtUsername;
-        private TextBox txtNama;
-        private Button btnTambah;
-        private Button btnSimpan;
-        private Button btnEdit;
-        private Button btnHapus;
-        private DataGridView dgvDataPetugas;
+        public TextBox txtRole;
+        public TextBox txtPassword;
+        public TextBox txtUsername;
+        public TextBox txtNama;
+        public Button btnSimpan;
+        public Button btnEdit;
+        public Button btnHapus;
+        public DataGridView dgvDataPetugas;
     }
 }

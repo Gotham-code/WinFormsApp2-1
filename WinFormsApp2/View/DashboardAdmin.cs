@@ -16,15 +16,15 @@ namespace WinFormsApp2
         // =======================================================
         private void PindahHalaman(Form formTujuan)
         {
-       
+
             this.splitContainer1.Panel2.Controls.Clear();
 
-          
+
             formTujuan.TopLevel = false;
             formTujuan.FormBorderStyle = FormBorderStyle.None;
             formTujuan.Dock = DockStyle.Fill;
 
-            
+
             this.splitContainer1.Panel2.Controls.Add(formTujuan);
             this.splitContainer1.Panel2.Tag = formTujuan;
             formTujuan.Show();
@@ -34,45 +34,53 @@ namespace WinFormsApp2
         // EVENT HANDLER: Klik Tombol Menu Utama
         // =======================================================
 
-  
-        private void button1_Click(object sender, EventArgs e)
+
+        private void btnDashboard_Click(object sender, EventArgs e)
         {
-            
-            MenuUtama formHome = new MenuUtama();
+
+            MenuUtamaAdmin formHome = new MenuUtamaAdmin();
             PindahHalaman(formHome);
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnTanaman_Click(object sender, EventArgs e)
         {
-            
+
             Tanaman formTanaman = new Tanaman();
             PindahHalaman(formTanaman);
         }
-        private void button3_Click(object sender, EventArgs e)
+        private void btnLahan_Click(object sender, EventArgs e)
         {
-            
+
             Lahan formLahan = new Lahan();
 
-            
+
             PindahHalaman(formLahan);
         }
-        
-        private void button4_Click(object sender, EventArgs e)
+
+        private void btnPetugas_Click(object sender, EventArgs e)
         {
-            
+
             DataPetugas formPetugas = new DataPetugas();
 
             PindahHalaman(formPetugas);
         }
-       
-        private void button5_Click(object sender, EventArgs e)
+
+        private void btnLaporan_Click(object sender, EventArgs e)
         {
-           
+
             Laporan formLaporan = new Laporan();
 
-            
+
             PindahHalaman(formLaporan);
         }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            LoginForm login = new LoginForm();
+            login.Show();
+            this.Close();
+        }
+
         // =======================================================
         //  Error Designer
         // =======================================================
@@ -80,15 +88,17 @@ namespace WinFormsApp2
 
         private void DashboardAdmin_Load(object sender, EventArgs e)
         {
-        
-            MenuUtama formHome = new MenuUtama();
+
+            MenuUtamaAdmin formHome = new MenuUtamaAdmin();
             PindahHalaman(formHome);
         }
         private void label1_Click(object sender, EventArgs e) { }
 
         private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e) { }
 
-        
-        
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

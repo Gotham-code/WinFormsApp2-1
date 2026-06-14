@@ -31,63 +31,67 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Tanaman));
             dgvTanaman = new DataGridView();
-            txtId = new TextBox();
-            txtNama = new TextBox();
-            txtTgl = new TextBox();
+            txtIdTanaman = new TextBox();
+            txtNamaTanaman = new TextBox();
             txtVarietas = new TextBox();
             contextMenuStrip1 = new ContextMenuStrip(components);
-            txtJenis = new ComboBox();
-            btnTambah = new Button();
+            cboKomoditas = new ComboBox();
             btnSimpan = new Button();
             btnEdit = new Button();
             btnHapus = new Button();
             btnReset = new Button();
+            dtpTanggalTanam = new DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)dgvTanaman).BeginInit();
             SuspendLayout();
             // 
             // dgvTanaman
             // 
+            dgvTanaman.AllowUserToAddRows = false;
+            dgvTanaman.AllowUserToDeleteRows = false;
+            dgvTanaman.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvTanaman.BackgroundColor = Color.White;
+            dgvTanaman.BorderStyle = BorderStyle.None;
             dgvTanaman.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvTanaman.Location = new Point(64, 217);
+            dgvTanaman.MultiSelect = false;
             dgvTanaman.Name = "dgvTanaman";
+            dgvTanaman.ReadOnly = true;
+            dgvTanaman.RowHeadersVisible = false;
             dgvTanaman.RowHeadersWidth = 51;
+            dgvTanaman.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvTanaman.Size = new Size(513, 208);
             dgvTanaman.TabIndex = 6;
+            dgvTanaman.CellClick += dgvTanaman_CellClick;
             // 
-            // txtId
+            // txtIdTanaman
             // 
-            txtId.Location = new Point(85, 66);
-            txtId.Name = "txtId";
-            txtId.Size = new Size(125, 27);
-            txtId.TabIndex = 7;
-            txtId.Tag = "Nama Tanaman";
-            txtId.Text = "IDTanaman";
-            txtId.TextChanged += textBox1_TextChanged;
+            txtIdTanaman.Location = new Point(85, 66);
+            txtIdTanaman.Name = "txtIdTanaman";
+            txtIdTanaman.PlaceholderText = "ID Tanaman";
+            txtIdTanaman.Size = new Size(125, 27);
+            txtIdTanaman.TabIndex = 7;
+            txtIdTanaman.Tag = "txtIdTanaman";
+            txtIdTanaman.TextChanged += textBox1_TextChanged;
             // 
-            // txtNama
+            // txtNamaTanaman
             // 
-            txtNama.Location = new Point(85, 104);
-            txtNama.Name = "txtNama";
-            txtNama.Size = new Size(125, 27);
-            txtNama.TabIndex = 8;
-            txtNama.Text = "NamaTanaman";
-            txtNama.TextChanged += textBox2_TextChanged;
-            // 
-            // txtTgl
-            // 
-            txtTgl.Location = new Point(432, 66);
-            txtTgl.Name = "txtTgl";
-            txtTgl.Size = new Size(125, 27);
-            txtTgl.TabIndex = 10;
-            txtTgl.Text = "TglTanam";
+            txtNamaTanaman.Location = new Point(85, 104);
+            txtNamaTanaman.Name = "txtNamaTanaman";
+            txtNamaTanaman.PlaceholderText = "Masukkan Nama Tanaman";
+            txtNamaTanaman.Size = new Size(125, 27);
+            txtNamaTanaman.TabIndex = 8;
+            txtNamaTanaman.Tag = "txtNamaTanaman";
+            txtNamaTanaman.TextChanged += textBox2_TextChanged;
             // 
             // txtVarietas
             // 
+            txtVarietas.CharacterCasing = CharacterCasing.Upper;
             txtVarietas.Location = new Point(250, 104);
             txtVarietas.Name = "txtVarietas";
+            txtVarietas.PlaceholderText = "Masukkan Varietas";
             txtVarietas.Size = new Size(125, 27);
             txtVarietas.TabIndex = 11;
-            txtVarietas.Text = "Varietas";
+            txtVarietas.TextChanged += txtVarietas_TextChanged;
             // 
             // contextMenuStrip1
             // 
@@ -95,25 +99,15 @@
             contextMenuStrip1.Name = "contextMenuStrip1";
             contextMenuStrip1.Size = new Size(61, 4);
             // 
-            // txtJenis
+            // cboKomoditas
             // 
-            txtJenis.FormattingEnabled = true;
-            txtJenis.Location = new Point(250, 66);
-            txtJenis.Name = "txtJenis";
-            txtJenis.Size = new Size(125, 28);
-            txtJenis.TabIndex = 13;
-            txtJenis.Text = "Jenis";
-            // 
-            // btnTambah
-            // 
-            btnTambah.BackgroundImageLayout = ImageLayout.None;
-            btnTambah.Location = new Point(64, 156);
-            btnTambah.Name = "btnTambah";
-            btnTambah.Size = new Size(94, 29);
-            btnTambah.TabIndex = 14;
-            btnTambah.Text = "Tambah";
-            btnTambah.UseVisualStyleBackColor = true;
-            btnTambah.Click += button7_Click;
+            cboKomoditas.FormattingEnabled = true;
+            cboKomoditas.Items.AddRange(new object[] { "Kopi", "Kakao" });
+            cboKomoditas.Location = new Point(250, 66);
+            cboKomoditas.Name = "cboKomoditas";
+            cboKomoditas.Size = new Size(125, 28);
+            cboKomoditas.TabIndex = 13;
+            cboKomoditas.Text = "Jenis";
             // 
             // btnSimpan
             // 
@@ -123,6 +117,7 @@
             btnSimpan.TabIndex = 15;
             btnSimpan.Text = "Simpan";
             btnSimpan.UseVisualStyleBackColor = true;
+            btnSimpan.Click += button1_Click;
             // 
             // btnEdit
             // 
@@ -132,6 +127,7 @@
             btnEdit.TabIndex = 16;
             btnEdit.Text = "Edit";
             btnEdit.UseVisualStyleBackColor = true;
+            btnEdit.Click += button2_Click;
             // 
             // btnHapus
             // 
@@ -141,6 +137,7 @@
             btnHapus.TabIndex = 17;
             btnHapus.Text = "Hapus";
             btnHapus.UseVisualStyleBackColor = true;
+            btnHapus.Click += button4_Click;
             // 
             // btnReset
             // 
@@ -148,8 +145,16 @@
             btnReset.Name = "btnReset";
             btnReset.Size = new Size(94, 29);
             btnReset.TabIndex = 18;
-            btnReset.Text = "Edit";
+            btnReset.Text = "Reset";
             btnReset.UseVisualStyleBackColor = true;
+            btnReset.Click += button5_Click;
+            // 
+            // dtpTanggalTanam
+            // 
+            dtpTanggalTanam.Location = new Point(421, 67);
+            dtpTanggalTanam.Name = "dtpTanggalTanam";
+            dtpTanggalTanam.Size = new Size(250, 27);
+            dtpTanggalTanam.TabIndex = 19;
             // 
             // Tanaman
             // 
@@ -158,16 +163,15 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(831, 450);
+            Controls.Add(dtpTanggalTanam);
             Controls.Add(btnReset);
             Controls.Add(btnHapus);
             Controls.Add(btnEdit);
             Controls.Add(btnSimpan);
-            Controls.Add(btnTambah);
-            Controls.Add(txtJenis);
+            Controls.Add(cboKomoditas);
             Controls.Add(txtVarietas);
-            Controls.Add(txtTgl);
-            Controls.Add(txtNama);
-            Controls.Add(txtId);
+            Controls.Add(txtNamaTanaman);
+            Controls.Add(txtIdTanaman);
             Controls.Add(dgvTanaman);
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.None;
@@ -178,19 +182,27 @@
             ResumeLayout(false);
             PerformLayout();
         }
+        private void txtVarietas_TextChanged(object sender, EventArgs e)
+        {
+            // Biarkan kosong seperti ini untuk memancing agar Designer bisa terbuka lagi
+        }
+        private void textBox1_TextChanged_1(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
 
         #endregion
-        private DataGridView dgvTanaman;
-        private TextBox txtId;
-        private TextBox txtNama;
-        private TextBox txtTgl;
-        private TextBox txtVarietas;
         private ContextMenuStrip contextMenuStrip1;
-        private ComboBox txtJenis;
-        private Button btnTambah;
         private Button btnSimpan;
         private Button btnEdit;
         private Button btnHapus;
         private Button btnReset;
+        public TextBox txtVarietas;
+        public DataGridView dgvTanaman;
+        public TextBox txtNamaTanaman;
+        public TextBox txtIdTanaman;
+        public ComboBox cboKomoditas;
+        public DateTimePicker dtpTanggalTanam;
+
     }
 }

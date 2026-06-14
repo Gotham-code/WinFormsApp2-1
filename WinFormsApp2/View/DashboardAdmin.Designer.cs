@@ -35,12 +35,12 @@
             label1 = new Label();
             panel3 = new Panel();
             label2 = new Label();
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
-            button4 = new Button();
-            button5 = new Button();
-            button6 = new Button();
+            btnDashboard = new Button();
+            btnTanaman = new Button();
+            btnLahan = new Button();
+            btnPetugas = new Button();
+            btnLaporan = new Button();
+            btnLogout = new Button();
             splitContainer1 = new SplitContainer();
             pictureBox1 = new PictureBox();
             panel2.SuspendLayout();
@@ -84,6 +84,7 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(221, 123);
             panel3.TabIndex = 2;
+            panel3.Paint += panel3_Paint;
             // 
             // label2
             // 
@@ -95,64 +96,100 @@
             label2.TabIndex = 1;
             label2.Text = "JUMLAH LAHAN";
             // 
-            // button1
+            // btnDashboard
             // 
-            button1.Location = new Point(76, 169);
-            button1.Name = "button1";
-            button1.Size = new Size(190, 29);
-            button1.TabIndex = 3;
-            button1.Text = "Dashboard";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            btnDashboard.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+            btnDashboard.BackColor = Color.Transparent;
+            btnDashboard.FlatStyle = FlatStyle.Flat;
+            btnDashboard.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
+            btnDashboard.ForeColor = Color.White;
+            btnDashboard.Location = new Point(50, 160);
+            btnDashboard.Name = "btnDashboard";
+            btnDashboard.Size = new Size(220, 45);
+            btnDashboard.TabIndex = 3;
+            btnDashboard.Text = "   Dashboard";
+            btnDashboard.TextAlign = ContentAlignment.MiddleLeft;
+            btnDashboard.UseVisualStyleBackColor = false;
+            btnDashboard.Click += btnDashboard_Click;
             // 
-            // button2
+            // btnTanaman
             // 
-            button2.Location = new Point(76, 204);
-            button2.Name = "button2";
-            button2.Size = new Size(190, 29);
-            button2.TabIndex = 4;
-            button2.Text = "Data Tanaman";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            btnTanaman.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+            btnTanaman.BackColor = Color.Transparent;
+            btnTanaman.FlatStyle = FlatStyle.Flat;
+            btnTanaman.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
+            btnTanaman.ForeColor = Color.White;
+            btnTanaman.Location = new Point(50, 215);
+            btnTanaman.Name = "btnTanaman";
+            btnTanaman.Size = new Size(220, 45);
+            btnTanaman.TabIndex = 4;
+            btnTanaman.Text = "   Data Tanaman";
+            btnTanaman.TextAlign = ContentAlignment.MiddleLeft;
+            btnTanaman.UseVisualStyleBackColor = false;
+            btnTanaman.Click += btnTanaman_Click;
             // 
-            // button3
+            // btnLahan
             // 
-            button3.Location = new Point(76, 239);
-            button3.Name = "button3";
-            button3.Size = new Size(190, 29);
-            button3.TabIndex = 5;
-            button3.Text = "Data Lahan";
-            button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click;
+            btnLahan.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+            btnLahan.BackColor = Color.Transparent;
+            btnLahan.FlatStyle = FlatStyle.Flat;
+            btnLahan.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
+            btnLahan.ForeColor = Color.White;
+            btnLahan.Location = new Point(50, 270);
+            btnLahan.Name = "btnLahan";
+            btnLahan.Size = new Size(220, 45);
+            btnLahan.TabIndex = 5;
+            btnLahan.Text = "   Data Lahan";
+            btnLahan.TextAlign = ContentAlignment.MiddleLeft;
+            btnLahan.UseVisualStyleBackColor = false;
+            btnLahan.Click += btnLahan_Click;
             // 
-            // button4
+            // btnPetugas
             // 
-            button4.Location = new Point(76, 274);
-            button4.Name = "button4";
-            button4.Size = new Size(190, 29);
-            button4.TabIndex = 6;
-            button4.Text = "Data Petugas";
-            button4.UseVisualStyleBackColor = true;
-            button4.Click += button4_Click;
+            btnPetugas.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+            btnPetugas.BackColor = Color.Transparent;
+            btnPetugas.FlatStyle = FlatStyle.Flat;
+            btnPetugas.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
+            btnPetugas.ForeColor = Color.White;
+            btnPetugas.Location = new Point(50, 325);
+            btnPetugas.Name = "btnPetugas";
+            btnPetugas.Size = new Size(220, 45);
+            btnPetugas.TabIndex = 6;
+            btnPetugas.Text = "   Data Petugas";
+            btnPetugas.TextAlign = ContentAlignment.MiddleLeft;
+            btnPetugas.UseVisualStyleBackColor = false;
+            btnPetugas.Click += btnPetugas_Click;
             // 
-            // button5
+            // btnLaporan
             // 
-            button5.Location = new Point(76, 309);
-            button5.Name = "button5";
-            button5.Size = new Size(190, 28);
-            button5.TabIndex = 7;
-            button5.Text = "Laporan";
-            button5.UseVisualStyleBackColor = true;
-            button5.Click += button5_Click;
+            btnLaporan.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+            btnLaporan.BackColor = Color.Transparent;
+            btnLaporan.FlatStyle = FlatStyle.Flat;
+            btnLaporan.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
+            btnLaporan.ForeColor = Color.White;
+            btnLaporan.Location = new Point(50, 380);
+            btnLaporan.Name = "btnLaporan";
+            btnLaporan.Size = new Size(220, 45);
+            btnLaporan.TabIndex = 7;
+            btnLaporan.Text = "   Laporan";
+            btnLaporan.TextAlign = ContentAlignment.MiddleLeft;
+            btnLaporan.UseVisualStyleBackColor = false;
+            btnLaporan.Click += btnLaporan_Click;
             // 
-            // button6
+            // btnLogout
             // 
-            button6.Location = new Point(76, 434);
-            button6.Name = "button6";
-            button6.Size = new Size(190, 28);
-            button6.TabIndex = 8;
-            button6.Text = "Logout";
-            button6.UseVisualStyleBackColor = true;
+            btnLogout.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnLogout.BackColor = Color.Firebrick;
+            btnLogout.FlatStyle = FlatStyle.Flat;
+            btnLogout.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
+            btnLogout.ForeColor = Color.White;
+            btnLogout.Location = new Point(50, 495);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Size = new Size(220, 40);
+            btnLogout.TabIndex = 8;
+            btnLogout.Text = "Logout";
+            btnLogout.UseVisualStyleBackColor = false;
+            btnLogout.Click += btnLogout_Click;
             // 
             // splitContainer1
             // 
@@ -165,12 +202,12 @@
             // 
             splitContainer1.Panel1.BackgroundImage = Properties.Resources.bg_kiri;
             splitContainer1.Panel1.BackgroundImageLayout = ImageLayout.Stretch;
-            splitContainer1.Panel1.Controls.Add(button1);
-            splitContainer1.Panel1.Controls.Add(button6);
-            splitContainer1.Panel1.Controls.Add(button2);
-            splitContainer1.Panel1.Controls.Add(button5);
-            splitContainer1.Panel1.Controls.Add(button4);
-            splitContainer1.Panel1.Controls.Add(button3);
+            splitContainer1.Panel1.Controls.Add(btnDashboard);
+            splitContainer1.Panel1.Controls.Add(btnLogout);
+            splitContainer1.Panel1.Controls.Add(btnTanaman);
+            splitContainer1.Panel1.Controls.Add(btnLaporan);
+            splitContainer1.Panel1.Controls.Add(btnPetugas);
+            splitContainer1.Panel1.Controls.Add(btnLahan);
             // 
             // splitContainer1.Panel2
             // 
@@ -225,12 +262,12 @@
         private Label label1;
         private Panel panel3;
         private Label label2;
-        private Button button1;
-        private Button button2;
-        private Button button3;
-        private Button button4;
-        private Button button5;
-        private Button button6;
+        private Button btnDashboard;
+        private Button btnTanaman;
+        private Button btnLahan;
+        private Button btnPetugas;
+        private Button btnLaporan;
+        private Button btnLogout;
         private SplitContainer splitContainer1;
         private PictureBox pictureBox1;
     }

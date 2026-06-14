@@ -6,17 +6,16 @@ namespace MonitoringKopiKakao
 {
     public class DatabaseConfig
     {
-    
+
         private string connString = "Host=localhost;Port=5432;Username=postgres;Password=admin123;Database=dbPuslitFinish";
-        private NpgsqlConnection conn;
 
         public DatabaseConfig()
         {
-            conn = new NpgsqlConnection(connString);
         }
 
         public NpgsqlConnection GetConnection()
         {
+            NpgsqlConnection conn = new NpgsqlConnection(connString);
             if (conn.State == ConnectionState.Closed)
             {
                 conn.Open();
@@ -24,13 +23,14 @@ namespace MonitoringKopiKakao
             return conn;
         }
 
-       
+
         public DataTable ExecuteQuery(string query)
         {
             DataTable dt = new DataTable();
             try
             {
-                using (NpgsqlCommand cmd = new NpgsqlCommand(query, GetConnection()))
+                using (NpgsqlConnection conn = GetConnection())
+                using (NpgsqlCommand cmd = new NpgsqlCommand(query, conn))
                 {
                     using (NpgsqlDataAdapter da = new NpgsqlDataAdapter(cmd))
                     {
@@ -42,10 +42,6 @@ namespace MonitoringKopiKakao
             {
                 throw new Exception("Gagal mengeksekusi query: " + ex.Message);
             }
-            finally
-            {
-                conn.Close();
-            }
             return dt;
         }
 
@@ -54,16 +50,15 @@ namespace MonitoringKopiKakao
         {
             try
             {
-                cmd.Connection = GetConnection();
-                cmd.ExecuteNonQuery();
+                using (NpgsqlConnection conn = GetConnection())
+                {
+                    cmd.Connection = conn;
+                    cmd.ExecuteNonQuery();
+                }
             }
             catch (Exception ex)
             {
                 throw new Exception("Gagal menyimpan data: " + ex.Message);
-            }
-            finally
-            {
-                conn.Close();
             }
         }
     }

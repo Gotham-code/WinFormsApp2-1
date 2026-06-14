@@ -32,9 +32,8 @@
             txtLokasi = new TextBox();
             txtNamaLahan = new TextBox();
             txtLuas = new TextBox();
-            txtIdlahan = new TextBox();
+            txtIdLahan = new TextBox();
             cmbJenis = new ComboBox();
-            btnTambah = new Button();
             btnHapus = new Button();
             btnEdit = new Button();
             btnSimpan = new Button();
@@ -46,51 +45,43 @@
             // 
             txtLokasi.Location = new Point(381, 67);
             txtLokasi.Name = "txtLokasi";
+            txtLokasi.PlaceholderText = "Masukkan Lokasi Lahan";
             txtLokasi.Size = new Size(125, 27);
             txtLokasi.TabIndex = 0;
-            txtLokasi.Text = "Lokasi";
             // 
             // txtNamaLahan
             // 
             txtNamaLahan.Location = new Point(63, 119);
             txtNamaLahan.Name = "txtNamaLahan";
+            txtNamaLahan.PlaceholderText = "Masukkan Nama Lahan";
             txtNamaLahan.Size = new Size(125, 27);
             txtNamaLahan.TabIndex = 2;
-            txtNamaLahan.Text = "Nama Lahan ";
             // 
             // txtLuas
             // 
             txtLuas.Location = new Point(218, 119);
             txtLuas.Name = "txtLuas";
+            txtLuas.PlaceholderText = "Luas (Ha)";
             txtLuas.Size = new Size(125, 27);
             txtLuas.TabIndex = 3;
-            txtLuas.Text = "Luas";
             // 
-            // txtIdlahan
+            // txtIdLahan
             // 
-            txtIdlahan.Location = new Point(63, 67);
-            txtIdlahan.Name = "txtIdlahan";
-            txtIdlahan.Size = new Size(125, 27);
-            txtIdlahan.TabIndex = 4;
-            txtIdlahan.Text = "idlahan";
+            txtIdLahan.Location = new Point(63, 67);
+            txtIdLahan.Name = "txtIdLahan";
+            txtIdLahan.PlaceholderText = "ID Lahan";
+            txtIdLahan.Size = new Size(125, 27);
+            txtIdLahan.TabIndex = 4;
             // 
             // cmbJenis
             // 
             cmbJenis.FormattingEnabled = true;
+            cmbJenis.Items.AddRange(new object[] { "Andosol", "Latosol", "Gersang", "Regosol" });
             cmbJenis.Location = new Point(218, 67);
             cmbJenis.Name = "cmbJenis";
             cmbJenis.Size = new Size(125, 28);
             cmbJenis.TabIndex = 5;
             cmbJenis.Text = "Jenis";
-            // 
-            // btnTambah
-            // 
-            btnTambah.Location = new Point(63, 183);
-            btnTambah.Name = "btnTambah";
-            btnTambah.Size = new Size(94, 29);
-            btnTambah.TabIndex = 6;
-            btnTambah.Text = "TAMBAH";
-            btnTambah.UseVisualStyleBackColor = true;
             // 
             // btnHapus
             // 
@@ -100,6 +91,7 @@
             btnHapus.TabIndex = 7;
             btnHapus.Text = "HAPUS";
             btnHapus.UseVisualStyleBackColor = true;
+            btnHapus.Click += btnHapus_Click;
             // 
             // btnEdit
             // 
@@ -109,6 +101,7 @@
             btnEdit.TabIndex = 8;
             btnEdit.Text = "EDIT";
             btnEdit.UseVisualStyleBackColor = true;
+            btnEdit.Click += btnEdit_Click;
             // 
             // btnSimpan
             // 
@@ -118,6 +111,7 @@
             btnSimpan.TabIndex = 9;
             btnSimpan.Text = "SIMPAN";
             btnSimpan.UseVisualStyleBackColor = true;
+            btnSimpan.Click += btnSimpan_Click;
             // 
             // dgvLahan
             // 
@@ -127,6 +121,7 @@
             dgvLahan.RowHeadersWidth = 51;
             dgvLahan.Size = new Size(495, 188);
             dgvLahan.TabIndex = 10;
+            dgvLahan.CellClick += dgvLahan_CellClick;
             // 
             // Lahan
             // 
@@ -139,9 +134,8 @@
             Controls.Add(btnSimpan);
             Controls.Add(btnEdit);
             Controls.Add(btnHapus);
-            Controls.Add(btnTambah);
             Controls.Add(cmbJenis);
-            Controls.Add(txtIdlahan);
+            Controls.Add(txtIdLahan);
             Controls.Add(txtLuas);
             Controls.Add(txtNamaLahan);
             Controls.Add(txtLokasi);
@@ -157,15 +151,14 @@
 
         #endregion
 
-        private TextBox txtLokasi;
-        private TextBox txtNamaLahan;
-        private TextBox txtLuas;
-        private TextBox txtIdlahan;
-        private ComboBox cmbJenis;
-        private Button btnTambah;
+        public TextBox txtLokasi;
+        public TextBox txtNamaLahan;
+        public TextBox txtLuas;
+        public TextBox txtIdLahan;
+        public ComboBox cmbJenis;
         private Button btnHapus;
         private Button btnEdit;
         private Button btnSimpan;
-        private DataGridView dgvLahan;
+        public DataGridView dgvLahan;
     }
 }

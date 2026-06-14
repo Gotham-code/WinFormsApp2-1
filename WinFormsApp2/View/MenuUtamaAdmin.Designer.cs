@@ -1,6 +1,6 @@
 ﻿namespace WinFormsApp2.View
 {
-    partial class MenuUtama
+    partial class MenuUtamaAdmin
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuUtama));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuUtamaAdmin));
             pictureBox1 = new PictureBox();
             textBox1 = new TextBox();
             textBox2 = new TextBox();
