@@ -38,7 +38,7 @@
             ((System.ComponentModel.ISupportInitialize)dgvLaporan).BeginInit();
             SuspendLayout();
             // 
-            // txtPetugas
+            // txtPetugasandjiawndijbwjdbajdbwj
             // 
             txtPetugas.Location = new Point(72, 94);
             txtPetugas.Margin = new Padding(5, 5, 5, 5);
