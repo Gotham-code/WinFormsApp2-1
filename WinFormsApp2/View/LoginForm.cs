@@ -1,4 +1,5 @@
 using MonitoringKopiKakao;
+using Npgsql;
 using System;
 using System.Data;
 using System.Windows.Forms;
@@ -31,60 +32,79 @@ namespace WinFormsApp2
 
             try
             {
-                // PERBAIKAN QUERY: Menyatukan data tabel 'users', 'admin', dan 'petugas_monitoring'
-                // Kolom 'nama' dari masing-masing tabel anak digabung menjadi alias 'nama_lengkap'
-                string query = $@"
-            SELECT 
-                u.id_user, 
-                u.username, 
-                CASE 
-                    WHEN a.id_user IS NOT NULL THEN 'Admin'
-                    WHEN p.id_user IS NOT NULL THEN 'Petugas'
-                    ELSE 'Unknown'
-                END AS role,
-                COALESCE(a.nama, p.nama) AS nama_lengkap
-            FROM users u
-            LEFT JOIN admin a ON u.id_user = a.id_user
-            LEFT JOIN petugas_monitoring p ON u.id_user = p.id_user
-            WHERE u.username = '{username}' AND u.password = '{password}'";
-
-                // Menjalankan query menggunakan method ExecuteQuery dari class DatabaseConfig
-                DataTable hasil = db.ExecuteQuery(query);
-
-                // Jika data ditemukan (artinya username & password benar)
-                if (hasil.Rows.Count > 0)
+                using (var conn = db.GetConnection())
                 {
-                    // Mengambil data role hasil dari query gabungan di atas
-                    string role = hasil.Rows[0]["role"]?.ToString() ?? "";
-
-                    // Menyimpan data user ke Session agar bisa digunakan di form lain
-                    Session.IdUser = Convert.ToInt32(hasil.Rows[0]["id_user"]);
-                    Session.NamaLengkap = hasil.Rows[0]["nama_lengkap"]?.ToString() ?? "";
-
-                    MessageBox.Show($"Selamat Datang, {Session.NamaLengkap}!", "Login Berhasil", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    // --- PROSES ROUTING (PERPINDAHAN FORM) ---
-                    if (role == "Admin")
+                    // Pertama: cek apakah username ada
+                    using (var cmd = new NpgsqlCommand("SELECT id_user, password FROM users WHERE username = @user", conn))
                     {
-                        DashboardAdmin formAdmin = new DashboardAdmin();
-                        formAdmin.Show(); // Membuka Form Dashboard Admin
-                        this.Hide();      // Menyembunyikan Form Login ini
+                        cmd.Parameters.AddWithValue("@user", username);
+                        using (var da = new NpgsqlDataAdapter(cmd))
+                        {
+                            var dt = new DataTable();
+                            da.Fill(dt);
+                            if (dt.Rows.Count == 0)
+                            {
+                                MessageBox.Show("Username tidak terdaftar.", "Login Gagal", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                return;
+                            }
+
+                            var dbPassword = dt.Rows[0]["password"]?.ToString() ?? "";
+                            var idUser = Convert.ToInt32(dt.Rows[0]["id_user"]);
+
+                            if (dbPassword != password)
+                            {
+                                // Password beda
+                                MessageBox.Show("Password salah.", "Login Gagal", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+
+                            // Jika username & password cocok, ambil role dan nama
+                            using (var cmdRole = new NpgsqlCommand(@"SELECT 
+                                        CASE WHEN a.id_user IS NOT NULL THEN 'Admin' WHEN p.id_user IS NOT NULL THEN 'Petugas' ELSE 'Unknown' END AS role,
+                                        COALESCE(a.nama, p.nama) AS nama_lengkap
+                                    FROM users u
+                                    LEFT JOIN admin a ON u.id_user = a.id_user
+                                    LEFT JOIN petugas_monitoring p ON u.id_user = p.id_user
+                                    WHERE u.id_user = @id", conn))
+                            {
+                                cmdRole.Parameters.AddWithValue("@id", idUser);
+                                using (var da2 = new NpgsqlDataAdapter(cmdRole))
+                                {
+                                    var dtRole = new DataTable();
+                                    da2.Fill(dtRole);
+                                    string role = "";
+                                    string namaLengkap = "";
+                                    if (dtRole.Rows.Count > 0)
+                                    {
+                                        role = dtRole.Rows[0]["role"]?.ToString() ?? "";
+                                        namaLengkap = dtRole.Rows[0]["nama_lengkap"]?.ToString() ?? "";
+                                    }
+
+                                    Session.IdUser = idUser;
+                                    Session.NamaLengkap = namaLengkap;
+
+                                    MessageBox.Show($"Selamat Datang, {Session.NamaLengkap}!", "Login Berhasil", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                    if (role == "Admin")
+                                    {
+                                        DashboardAdmin formAdmin = new DashboardAdmin();
+                                        formAdmin.Show();
+                                        this.Hide();
+                                    }
+                                    else if (role == "Petugas")
+                                    {
+                                        DashboardPetugas formPetugas = new DashboardPetugas();
+                                        formPetugas.Show();
+                                        this.Hide();
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Role akun Anda tidak dikenali sistem.", "Akses Ditolak", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                                    }
+                                }
+                            }
+                        }
                     }
-                    else if (role == "Petugas")
-                    {
-                        DashboardPetugas formPetugas = new DashboardPetugas();
-                        formPetugas.Show(); // Membuka Form Dashboard Petugas
-                        this.Hide();        // Menyembunyikan Form Login ini
-                    }
-                    else
-                    {
-                        MessageBox.Show("Role akun Anda tidak dikenali sistem.", "Akses Ditolak", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                    }
-                }
-                else
-                {
-                    // Jika data tidak ditemukan
-                    MessageBox.Show("Username atau Password salah!", "Login Gagal", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)

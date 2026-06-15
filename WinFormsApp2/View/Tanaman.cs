@@ -46,7 +46,11 @@ namespace WinFormsApp2.View
 
         public void ResetForm()
         {
-            if (txtIdTanaman != null) txtIdTanaman.Clear();
+            if (txtIdTanaman != null) 
+            {
+                txtIdTanaman.Text = "";
+                txtIdTanaman.Tag = null;
+            }
             if (txtNamaTanaman != null) txtNamaTanaman.Clear();
             if (txtVarietas != null) txtVarietas.Clear();
 
@@ -55,10 +59,9 @@ namespace WinFormsApp2.View
                 cboKomoditas.SelectedIndex = 0;
             }
 
-            if (dtpTanggalTanam != null)
-            {
-                dtpTanggalTanam.Value = DateTime.Now;
-            }
+            btnSimpan.Enabled = true;
+            btnEdit.Enabled = false;
+            btnHapus.Enabled = false;
         }
 
         public void dgvTanaman_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -67,15 +70,13 @@ namespace WinFormsApp2.View
             {
                 DataGridViewRow row = dgvTanaman.Rows[e.RowIndex];
 
-                txtIdTanaman.Text = row.Cells["ID"].Value?.ToString() ?? "";
+                // Simpan ID asli di Tag untuk Update nanti
+                txtIdTanaman.Tag = row.Cells["ID"].Value?.ToString() ?? "0";
+                // Tampilkan ID asli di field (read-only display)
+                txtIdTanaman.Text = $"ID: {row.Cells["ID"].Value}";
                 txtNamaTanaman.Text = row.Cells["Nama Tanaman"].Value?.ToString() ?? "";
                 txtVarietas.Text = row.Cells["Varietas"].Value?.ToString() ?? "";
                 cboKomoditas.SelectedItem = row.Cells["Jenis"].Value?.ToString();
-
-                if (row.Cells["Tgl Tanam"].Value != null)
-                {
-                    dtpTanggalTanam.Value = Convert.ToDateTime(row.Cells["Tgl Tanam"].Value);
-                }
 
                 btnSimpan.Enabled = false;
                 btnEdit.Enabled = true;

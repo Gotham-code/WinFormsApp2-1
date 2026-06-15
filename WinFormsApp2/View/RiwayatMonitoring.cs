@@ -10,9 +10,13 @@ namespace WinFormsApp2.View
 {
     public partial class RiwayatMonitoring : Form
     {
+        private WinFormsApp2.UserController.MonitoringController controller;
+
         public RiwayatMonitoring()
         {
             InitializeComponent();
+            controller = new WinFormsApp2.UserController.MonitoringController(this);
+            Load += RiwayatMonitoring_Load;
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -20,9 +24,24 @@ namespace WinFormsApp2.View
 
         }
 
+        private void RiwayatMonitoring_Load(object sender, EventArgs e)
+        {
+            controller.TampilDataRiwayat();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            controller.HapusFromRiwayat();
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            controller.TampilDataRiwayat();
+        }
+
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            // keep default empty or use to show details
         }
     }
 }

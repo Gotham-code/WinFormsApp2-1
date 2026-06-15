@@ -26,12 +26,28 @@ namespace MonitoringKopiKakao.Controller
         {
             try
             {
+                if (string.IsNullOrWhiteSpace(view.TxtIdPetugas.Text) ||
+                    string.IsNullOrWhiteSpace(view.TxtUsername.Text) ||
+                    string.IsNullOrWhiteSpace(view.TxtPassword.Text) ||
+                    string.IsNullOrWhiteSpace(view.TxtNamaPetugas.Text))
+                {
+                    MessageBox.Show("Semua field wajib diisi!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (!int.TryParse(view.TxtIdPetugas.Text.Trim(), out int idPetugas) || idPetugas <= 0)
+                {
+                    MessageBox.Show("ID Petugas harus berupa angka positif!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                model.IdUser = idPetugas;
                 model.Username = view.TxtUsername.Text;
                 model.Password = view.TxtPassword.Text;
                 model.NamaPetugas = view.TxtNamaPetugas.Text;
 
                 model.InsertPetugas();
-                MessageBox.Show("Data Petugas berhasil ditambahkan!");
+                MessageBox.Show("Data Petugas berhasil ditambahkan!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 TampilData();
                 view.ResetForm();
             }
@@ -42,12 +58,19 @@ namespace MonitoringKopiKakao.Controller
         {
             try
             {
+                if (!int.TryParse(view.TxtIdPetugas.Text.Trim(), out int idPetugas) || idPetugas <= 0)
+                {
+                    MessageBox.Show("ID Petugas tidak valid!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                model.IdUser = idPetugas;
                 model.Username = view.TxtUsername.Text;
                 model.Password = view.TxtPassword.Text;
                 model.NamaPetugas = view.TxtNamaPetugas.Text;
 
                 model.UpdatePetugas();
-                MessageBox.Show("Data Petugas berhasil diperbarui!");
+                MessageBox.Show("Data Petugas berhasil diperbarui!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 TampilData();
                 view.ResetForm();
             }
@@ -58,11 +81,16 @@ namespace MonitoringKopiKakao.Controller
         {
             try
             {
-                int nama = Convert.ToInt32(view.TxtNamaPetugas.Text);
+                if (!int.TryParse(view.TxtIdPetugas.Text.Trim(), out int idPetugas) || idPetugas <= 0)
+                {
+                    MessageBox.Show("ID Petugas tidak valid!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 if (MessageBox.Show("Hapus akun petugas terpilih?", "Konfirmasi", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    model.DeletePetugas(nama);
-                    MessageBox.Show("Data Petugas berhasil dihapus!");
+                    model.DeletePetugas(idPetugas);
+                    MessageBox.Show("Data Petugas berhasil dihapus!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     TampilData();
                     view.ResetForm();
                 }

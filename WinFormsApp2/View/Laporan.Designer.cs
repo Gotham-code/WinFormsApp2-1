@@ -34,43 +34,46 @@
             btnTampilkanLaporan = new Button();
             btnPetugas = new Button();
             dgvLaporan = new DataGridView();
-            periodeawal = new DateTimePicker();
             dateTimePicker1 = new DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)dgvLaporan).BeginInit();
             SuspendLayout();
             // 
             // txtPetugas
             // 
-            txtPetugas.Location = new Point(44, 59);
+            txtPetugas.Location = new Point(72, 94);
+            txtPetugas.Margin = new Padding(5, 5, 5, 5);
             txtPetugas.Name = "txtPetugas";
             txtPetugas.PlaceholderText = "Nama Petugas";
-            txtPetugas.Size = new Size(125, 27);
+            txtPetugas.Size = new Size(201, 39);
             txtPetugas.TabIndex = 2;
             // 
             // cmbJenis
             // 
             cmbJenis.FormattingEnabled = true;
             cmbJenis.Items.AddRange(new object[] { "Kopi", "Kakao" });
-            cmbJenis.Location = new Point(44, 112);
+            cmbJenis.Location = new Point(72, 179);
+            cmbJenis.Margin = new Padding(5, 5, 5, 5);
             cmbJenis.Name = "cmbJenis";
-            cmbJenis.Size = new Size(125, 28);
+            cmbJenis.Size = new Size(201, 40);
             cmbJenis.TabIndex = 4;
             cmbJenis.Text = "Jenis Tanaman";
             // 
             // btnTampilkanLaporan
             // 
-            btnTampilkanLaporan.Location = new Point(109, 157);
+            btnTampilkanLaporan.Location = new Point(177, 251);
+            btnTampilkanLaporan.Margin = new Padding(5, 5, 5, 5);
             btnTampilkanLaporan.Name = "btnTampilkanLaporan";
-            btnTampilkanLaporan.Size = new Size(180, 29);
+            btnTampilkanLaporan.Size = new Size(292, 46);
             btnTampilkanLaporan.TabIndex = 5;
             btnTampilkanLaporan.Text = "TAMPILKAN  LAPORAN";
             btnTampilkanLaporan.UseVisualStyleBackColor = true;
             // 
             // btnPetugas
             // 
-            btnPetugas.Location = new Point(342, 157);
+            btnPetugas.Location = new Point(556, 251);
+            btnPetugas.Margin = new Padding(5, 5, 5, 5);
             btnPetugas.Name = "btnPetugas";
-            btnPetugas.Size = new Size(161, 29);
+            btnPetugas.Size = new Size(262, 46);
             btnPetugas.TabIndex = 6;
             btnPetugas.Text = "CETAK LAPORAN";
             btnPetugas.UseVisualStyleBackColor = true;
@@ -78,41 +81,36 @@
             // dgvLaporan
             // 
             dgvLaporan.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvLaporan.Location = new Point(44, 211);
+            dgvLaporan.Location = new Point(72, 338);
+            dgvLaporan.Margin = new Padding(5, 5, 5, 5);
             dgvLaporan.Name = "dgvLaporan";
             dgvLaporan.RowHeadersWidth = 51;
-            dgvLaporan.Size = new Size(521, 218);
+            dgvLaporan.Size = new Size(847, 349);
             dgvLaporan.TabIndex = 7;
-            // 
-            // periodeawal
-            // 
-            periodeawal.Location = new Point(253, 59);
-            periodeawal.Name = "periodeawal";
-            periodeawal.Size = new Size(250, 27);
-            periodeawal.TabIndex = 8;
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.Location = new Point(253, 112);
+            dateTimePicker1.Location = new Point(411, 179);
+            dateTimePicker1.Margin = new Padding(5, 5, 5, 5);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(250, 27);
+            dateTimePicker1.Size = new Size(404, 39);
             dateTimePicker1.TabIndex = 9;
             // 
             // Laporan
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(632, 450);
+            ClientSize = new Size(1027, 720);
             Controls.Add(dateTimePicker1);
-            Controls.Add(periodeawal);
             Controls.Add(dgvLaporan);
             Controls.Add(btnPetugas);
             Controls.Add(btnTampilkanLaporan);
             Controls.Add(cmbJenis);
             Controls.Add(txtPetugas);
             DoubleBuffered = true;
+            Margin = new Padding(5, 5, 5, 5);
             Name = "Laporan";
             Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)dgvLaporan).EndInit();

@@ -7,6 +7,7 @@ namespace MonitoringKopiKakao.Model
     public class LahanModel
     {
         public int IdLahan { get; set; }
+        public string NamaLahan { get; set; }
         public string Lokasi { get; set; }
         public double LuasLahan { get; set; }
         public string JenisTanah { get; set; }
@@ -16,19 +17,21 @@ namespace MonitoringKopiKakao.Model
         // Ambil semua data lahan
         public DataTable GetAllLahan()
         {
-            string query = "SELECT id_lahan AS \"ID\", lokasi AS \"Lokasi\", luas_lahan AS \"Luas (Ha)\", jenis_tanah AS \"Jenis Tanah\" FROM lahan ORDER BY id_lahan DESC";
+            string query = "SELECT id_lahan AS \"ID\", nama_lahan AS \"Nama Lahan\", lokasi AS \"Lokasi\", luas_lahan AS \"Luas (Ha)\", jenis_tanah AS \"Jenis Tanah\" FROM lahan ORDER BY id_lahan DESC";
             return db.ExecuteQuery(query);
         }
 
         // Simpan data
         public void InsertLahan()
         {
-            string query = "INSERT INTO lahan (lokasi, luas_lahan, jenis_tanah) VALUES (@lokasi, @luas, @tanah)";
+            string query = "INSERT INTO lahan (id_lahan, nama_lahan, lokasi, luas_lahan, jenis_tanah) VALUES (@id, @nama, @lokasi, @luas, @tanah)";
             using (NpgsqlCommand cmd = new NpgsqlCommand(query))
             {
-                cmd.Parameters.AddWithValue("@lokasi", Lokasi);
+                cmd.Parameters.AddWithValue("@id", IdLahan);
+                cmd.Parameters.AddWithValue("@nama", NamaLahan ?? "");
+                cmd.Parameters.AddWithValue("@lokasi", Lokasi ?? "");
                 cmd.Parameters.AddWithValue("@luas", LuasLahan);
-                cmd.Parameters.AddWithValue("@tanah", JenisTanah);
+                cmd.Parameters.AddWithValue("@tanah", JenisTanah ?? "");
                 db.ExecuteNonQuery(cmd);
             }
         }
@@ -36,13 +39,14 @@ namespace MonitoringKopiKakao.Model
         // Ubah data
         public void UpdateLahan()
         {
-            string query = "UPDATE lahan SET lokasi = @lokasi, luas_lahan = @luas, jenis_tanah = @tanah WHERE id_lahan = @id";
+            string query = "UPDATE lahan SET nama_lahan = @nama, lokasi = @lokasi, luas_lahan = @luas, jenis_tanah = @tanah WHERE id_lahan = @id";
             using (NpgsqlCommand cmd = new NpgsqlCommand(query))
             {
                 cmd.Parameters.AddWithValue("@id", IdLahan);
-                cmd.Parameters.AddWithValue("@lokasi", Lokasi);
+                cmd.Parameters.AddWithValue("@nama", NamaLahan ?? "");
+                cmd.Parameters.AddWithValue("@lokasi", Lokasi ?? "");
                 cmd.Parameters.AddWithValue("@luas", LuasLahan);
-                cmd.Parameters.AddWithValue("@tanah", JenisTanah);
+                cmd.Parameters.AddWithValue("@tanah", JenisTanah ?? "");
                 db.ExecuteNonQuery(cmd);
             }
         }

@@ -56,6 +56,7 @@ namespace WinFormsApp2.View
         public void ResetForm()
         {
             txtIdLahan.Clear();
+            if (txtNamaLahan != null) txtNamaLahan.Clear();
             txtLokasi.Clear();
             txtLuas.Clear();
             if (cmbJenis.Items.Count > 0) cmbJenis.SelectedIndex = 0;
@@ -72,6 +73,7 @@ namespace WinFormsApp2.View
             {
                 DataGridViewRow row = dgvLahan.Rows[e.RowIndex];
                 txtIdLahan.Text = row.Cells["ID"].Value.ToString();
+                txtNamaLahan.Text = row.Cells["Nama Lahan"].Value?.ToString() ?? "";
                 txtLokasi.Text = row.Cells["Lokasi"].Value.ToString();
                 txtLuas.Text = row.Cells["Luas (Ha)"].Value.ToString();
                 cmbJenis.SelectedItem = row.Cells["Jenis Tanah"].Value.ToString();

@@ -25,29 +25,24 @@ namespace MonitoringKopiKakao.Model
 
         public void InsertPetugas()
         {
-            // Ambil ID secara real-time dari input users menggunakan klausa RETURNING
-            string queryUser = "INSERT INTO users (username, password) VALUES (@user, @pass) RETURNING id_user";
+            // INSERT ID Petugas secara eksplisit dari input user
+            string queryUser = "INSERT INTO users (id_user, username, password) VALUES (@id, @user, @pass)";
             string queryPetugas = "INSERT INTO petugas_monitoring (id_user, nama) VALUES (@id, @nama)";
 
             using (NpgsqlConnection conn = db.GetConnection())
             {
                 using (NpgsqlCommand cmdUser = new NpgsqlCommand(queryUser, conn))
                 {
+                    cmdUser.Parameters.AddWithValue("@id", IdUser);
                     cmdUser.Parameters.AddWithValue("@user", Username);
                     cmdUser.Parameters.AddWithValue("@pass", Password);
+                    cmdUser.ExecuteNonQuery();
 
-                    // Ambil id_user yang barusan digenerate otomatis
-                    object result = cmdUser.ExecuteScalar();
-                    int newId = result != null ? Convert.ToInt32(result) : 0;
-
-                    if (newId > 0)
+                    using (NpgsqlCommand cmdPetugas = new NpgsqlCommand(queryPetugas, conn))
                     {
-                        using (NpgsqlCommand cmdPetugas = new NpgsqlCommand(queryPetugas, conn))
-                        {
-                            cmdPetugas.Parameters.AddWithValue("@id", newId);
-                            cmdPetugas.Parameters.AddWithValue("@nama", NamaPetugas);
-                            cmdPetugas.ExecuteNonQuery();
-                        }
+                        cmdPetugas.Parameters.AddWithValue("@id", IdUser);
+                        cmdPetugas.Parameters.AddWithValue("@nama", NamaPetugas);
+                        cmdPetugas.ExecuteNonQuery();
                     }
                 }
             }

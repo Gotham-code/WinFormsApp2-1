@@ -7,7 +7,7 @@ namespace MonitoringKopiKakao
     public class DatabaseConfig
     {
 
-        private string connString = "Host=localhost;Port=5432;Username=postgres;Password=admin123;Database=dbPuslitFinish";
+        private string connString = "Host=localhost;Port=5432;Username=postgres;Password=Salimbaikhati#33;Database=dbPuslitFinish";
 
         public DatabaseConfig()
         {

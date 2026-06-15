@@ -41,40 +41,44 @@
             pictureBox1.BackColor = Color.Transparent;
             pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
             pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox1.Location = new Point(234, 36);
+            pictureBox1.Location = new Point(53, 50);
+            pictureBox1.Margin = new Padding(5, 5, 5, 5);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(332, 116);
+            pictureBox1.Size = new Size(681, 186);
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
             // 
             // panel1
             // 
             panel1.Controls.Add(label1);
-            panel1.Location = new Point(188, 220);
+            panel1.Location = new Point(56, 361);
+            panel1.Margin = new Padding(5, 5, 5, 5);
             panel1.Name = "panel1";
-            panel1.Size = new Size(417, 183);
+            panel1.Size = new Size(678, 293);
             panel1.TabIndex = 2;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(15, 16);
+            label1.Location = new Point(24, 26);
+            label1.Margin = new Padding(5, 0, 5, 0);
             label1.Name = "label1";
-            label1.Size = new Size(135, 20);
+            label1.Size = new Size(217, 32);
             label1.TabIndex = 0;
             label1.Text = "Monitoring Hari Ini";
             label1.Click += label1_Click;
             // 
             // MenuUtamaPetugas
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1300, 720);
             Controls.Add(panel1);
             Controls.Add(pictureBox1);
             DoubleBuffered = true;
+            Margin = new Padding(5, 5, 5, 5);
             Name = "MenuUtamaPetugas";
             Text = "MenuUtamaPetugas";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

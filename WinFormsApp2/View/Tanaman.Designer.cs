@@ -40,7 +40,6 @@
             btnEdit = new Button();
             btnHapus = new Button();
             btnReset = new Button();
-            dtpTanggalTanam = new DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)dgvTanaman).BeginInit();
             SuspendLayout();
             // 
@@ -52,33 +51,36 @@
             dgvTanaman.BackgroundColor = Color.White;
             dgvTanaman.BorderStyle = BorderStyle.None;
             dgvTanaman.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvTanaman.Location = new Point(64, 217);
+            dgvTanaman.Location = new Point(104, 347);
+            dgvTanaman.Margin = new Padding(5, 5, 5, 5);
             dgvTanaman.MultiSelect = false;
             dgvTanaman.Name = "dgvTanaman";
             dgvTanaman.ReadOnly = true;
             dgvTanaman.RowHeadersVisible = false;
             dgvTanaman.RowHeadersWidth = 51;
             dgvTanaman.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvTanaman.Size = new Size(513, 208);
+            dgvTanaman.Size = new Size(834, 333);
             dgvTanaman.TabIndex = 6;
             dgvTanaman.CellClick += dgvTanaman_CellClick;
             // 
             // txtIdTanaman
             // 
-            txtIdTanaman.Location = new Point(85, 66);
+            txtIdTanaman.Location = new Point(138, 106);
+            txtIdTanaman.Margin = new Padding(5, 5, 5, 5);
             txtIdTanaman.Name = "txtIdTanaman";
-            txtIdTanaman.PlaceholderText = "ID Tanaman";
-            txtIdTanaman.Size = new Size(125, 27);
+            txtIdTanaman.PlaceholderText = "Masukkan ID Tanaman";
+            txtIdTanaman.Size = new Size(201, 39);
             txtIdTanaman.TabIndex = 7;
             txtIdTanaman.Tag = "txtIdTanaman";
             txtIdTanaman.TextChanged += textBox1_TextChanged;
             // 
             // txtNamaTanaman
             // 
-            txtNamaTanaman.Location = new Point(85, 104);
+            txtNamaTanaman.Location = new Point(138, 166);
+            txtNamaTanaman.Margin = new Padding(5, 5, 5, 5);
             txtNamaTanaman.Name = "txtNamaTanaman";
             txtNamaTanaman.PlaceholderText = "Masukkan Nama Tanaman";
-            txtNamaTanaman.Size = new Size(125, 27);
+            txtNamaTanaman.Size = new Size(201, 39);
             txtNamaTanaman.TabIndex = 8;
             txtNamaTanaman.Tag = "txtNamaTanaman";
             txtNamaTanaman.TextChanged += textBox2_TextChanged;
@@ -86,10 +88,11 @@
             // txtVarietas
             // 
             txtVarietas.CharacterCasing = CharacterCasing.Upper;
-            txtVarietas.Location = new Point(250, 104);
+            txtVarietas.Location = new Point(406, 166);
+            txtVarietas.Margin = new Padding(5, 5, 5, 5);
             txtVarietas.Name = "txtVarietas";
             txtVarietas.PlaceholderText = "Masukkan Varietas";
-            txtVarietas.Size = new Size(125, 27);
+            txtVarietas.Size = new Size(201, 39);
             txtVarietas.TabIndex = 11;
             txtVarietas.TextChanged += txtVarietas_TextChanged;
             // 
@@ -103,17 +106,19 @@
             // 
             cboKomoditas.FormattingEnabled = true;
             cboKomoditas.Items.AddRange(new object[] { "Kopi", "Kakao" });
-            cboKomoditas.Location = new Point(250, 66);
+            cboKomoditas.Location = new Point(406, 106);
+            cboKomoditas.Margin = new Padding(5, 5, 5, 5);
             cboKomoditas.Name = "cboKomoditas";
-            cboKomoditas.Size = new Size(125, 28);
+            cboKomoditas.Size = new Size(201, 40);
             cboKomoditas.TabIndex = 13;
             cboKomoditas.Text = "Jenis";
             // 
             // btnSimpan
             // 
-            btnSimpan.Location = new Point(164, 156);
+            btnSimpan.Location = new Point(266, 250);
+            btnSimpan.Margin = new Padding(5, 5, 5, 5);
             btnSimpan.Name = "btnSimpan";
-            btnSimpan.Size = new Size(94, 29);
+            btnSimpan.Size = new Size(153, 46);
             btnSimpan.TabIndex = 15;
             btnSimpan.Text = "Simpan";
             btnSimpan.UseVisualStyleBackColor = true;
@@ -121,9 +126,10 @@
             // 
             // btnEdit
             // 
-            btnEdit.Location = new Point(264, 156);
+            btnEdit.Location = new Point(429, 250);
+            btnEdit.Margin = new Padding(5, 5, 5, 5);
             btnEdit.Name = "btnEdit";
-            btnEdit.Size = new Size(94, 29);
+            btnEdit.Size = new Size(153, 46);
             btnEdit.TabIndex = 16;
             btnEdit.Text = "Edit";
             btnEdit.UseVisualStyleBackColor = true;
@@ -131,9 +137,10 @@
             // 
             // btnHapus
             // 
-            btnHapus.Location = new Point(364, 156);
+            btnHapus.Location = new Point(592, 250);
+            btnHapus.Margin = new Padding(5, 5, 5, 5);
             btnHapus.Name = "btnHapus";
-            btnHapus.Size = new Size(94, 29);
+            btnHapus.Size = new Size(153, 46);
             btnHapus.TabIndex = 17;
             btnHapus.Text = "Hapus";
             btnHapus.UseVisualStyleBackColor = true;
@@ -141,29 +148,22 @@
             // 
             // btnReset
             // 
-            btnReset.Location = new Point(464, 156);
+            btnReset.Location = new Point(754, 250);
+            btnReset.Margin = new Padding(5, 5, 5, 5);
             btnReset.Name = "btnReset";
-            btnReset.Size = new Size(94, 29);
+            btnReset.Size = new Size(153, 46);
             btnReset.TabIndex = 18;
             btnReset.Text = "Reset";
             btnReset.UseVisualStyleBackColor = true;
             btnReset.Click += button5_Click;
             // 
-            // dtpTanggalTanam
-            // 
-            dtpTanggalTanam.Location = new Point(421, 67);
-            dtpTanggalTanam.Name = "dtpTanggalTanam";
-            dtpTanggalTanam.Size = new Size(250, 27);
-            dtpTanggalTanam.TabIndex = 19;
-            // 
             // Tanaman
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(831, 450);
-            Controls.Add(dtpTanggalTanam);
+            ClientSize = new Size(1350, 720);
             Controls.Add(btnReset);
             Controls.Add(btnHapus);
             Controls.Add(btnEdit);
@@ -175,6 +175,7 @@
             Controls.Add(dgvTanaman);
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(5, 5, 5, 5);
             Name = "Tanaman";
             Text = "Tanaman";
             Load += Tanaman_Load;
@@ -202,7 +203,6 @@
         public TextBox txtNamaTanaman;
         public TextBox txtIdTanaman;
         public ComboBox cboKomoditas;
-        public DateTimePicker dtpTanggalTanam;
 
     }
 }

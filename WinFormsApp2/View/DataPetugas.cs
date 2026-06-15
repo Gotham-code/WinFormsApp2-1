@@ -8,6 +8,7 @@ namespace WinFormsApp2.View
     {
         private PetugasController controller;
 
+        public TextBox TxtIdPetugas => txtIdPetugas;
         public TextBox TxtUsername => txtUsername;
         public TextBox TxtPassword => txtPassword;
         public TextBox TxtNamaPetugas => txtNama;
@@ -32,11 +33,10 @@ namespace WinFormsApp2.View
 
         public void ResetForm()
         {
-            
+            txtIdPetugas.Clear();
             txtNama.Clear();
             txtUsername.Clear();
             txtPassword.Clear();
-            txtRole.Clear();
             btnEdit.Enabled = false;
             btnHapus.Enabled = false;
             btnSimpan.Enabled = true;
@@ -47,7 +47,8 @@ namespace WinFormsApp2.View
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = dgvDataPetugas.Rows[e.RowIndex];
-                
+
+                txtIdPetugas.Text = row.Cells["ID"].Value.ToString();
                 txtUsername.Text = row.Cells["Username"].Value.ToString();
                 txtPassword.Text = row.Cells["Password"].Value.ToString();
                 txtNama.Text = row.Cells["Nama Petugas"].Value.ToString();

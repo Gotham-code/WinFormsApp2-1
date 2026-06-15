@@ -34,12 +34,24 @@ namespace MonitoringKopiKakao.Controller
             try
             {
                 // Validasi input kosong
-                if (string.IsNullOrEmpty(view.txtLokasi.Text) || string.IsNullOrEmpty(view.txtLuas.Text))
+                if (string.IsNullOrEmpty(view.txtIdLahan.Text) || 
+                    string.IsNullOrEmpty(view.txtNamaLahan.Text) || 
+                    string.IsNullOrEmpty(view.txtLokasi.Text) || 
+                    string.IsNullOrEmpty(view.txtLuas.Text))
                 {
-                    MessageBox.Show("Semua data wajib diisi!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("ID Lahan, Nama Lahan, Lokasi, dan Luas wajib diisi!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
+                // Validasi ID Lahan
+                if (!int.TryParse(view.txtIdLahan.Text.Trim(), out int idLahan) || idLahan <= 0)
+                {
+                    MessageBox.Show("ID Lahan harus berupa angka positif!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                model.IdLahan = idLahan;
+                model.NamaLahan = view.txtNamaLahan.Text;
                 model.Lokasi = view.txtLokasi.Text;
                 model.LuasLahan = Convert.ToDouble(view.txtLuas.Text);
                 model.JenisTanah = view.cboJenisTanah.SelectedItem.ToString();
@@ -60,6 +72,7 @@ namespace MonitoringKopiKakao.Controller
             try
             {
                 model.IdLahan = Convert.ToInt32(view.txtIdLahan.Text);
+                model.NamaLahan = view.txtNamaLahan.Text;
                 model.Lokasi = view.txtLokasi.Text;
                 model.LuasLahan = Convert.ToDouble(view.txtLuas.Text);
                 model.JenisTanah = view.cboJenisTanah.SelectedItem.ToString();

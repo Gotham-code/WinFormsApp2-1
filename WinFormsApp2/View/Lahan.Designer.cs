@@ -43,51 +43,57 @@
             // 
             // txtLokasi
             // 
-            txtLokasi.Location = new Point(381, 67);
+            txtLokasi.Location = new Point(619, 107);
+            txtLokasi.Margin = new Padding(5, 5, 5, 5);
             txtLokasi.Name = "txtLokasi";
             txtLokasi.PlaceholderText = "Masukkan Lokasi Lahan";
-            txtLokasi.Size = new Size(125, 27);
+            txtLokasi.Size = new Size(201, 39);
             txtLokasi.TabIndex = 0;
             // 
             // txtNamaLahan
             // 
-            txtNamaLahan.Location = new Point(63, 119);
+            txtNamaLahan.Location = new Point(102, 190);
+            txtNamaLahan.Margin = new Padding(5, 5, 5, 5);
             txtNamaLahan.Name = "txtNamaLahan";
             txtNamaLahan.PlaceholderText = "Masukkan Nama Lahan";
-            txtNamaLahan.Size = new Size(125, 27);
+            txtNamaLahan.Size = new Size(201, 39);
             txtNamaLahan.TabIndex = 2;
             // 
             // txtLuas
             // 
-            txtLuas.Location = new Point(218, 119);
+            txtLuas.Location = new Point(354, 190);
+            txtLuas.Margin = new Padding(5, 5, 5, 5);
             txtLuas.Name = "txtLuas";
             txtLuas.PlaceholderText = "Luas (Ha)";
-            txtLuas.Size = new Size(125, 27);
+            txtLuas.Size = new Size(201, 39);
             txtLuas.TabIndex = 3;
             // 
             // txtIdLahan
             // 
-            txtIdLahan.Location = new Point(63, 67);
+            txtIdLahan.Location = new Point(102, 107);
+            txtIdLahan.Margin = new Padding(5, 5, 5, 5);
             txtIdLahan.Name = "txtIdLahan";
             txtIdLahan.PlaceholderText = "ID Lahan";
-            txtIdLahan.Size = new Size(125, 27);
+            txtIdLahan.Size = new Size(201, 39);
             txtIdLahan.TabIndex = 4;
             // 
             // cmbJenis
             // 
             cmbJenis.FormattingEnabled = true;
             cmbJenis.Items.AddRange(new object[] { "Andosol", "Latosol", "Gersang", "Regosol" });
-            cmbJenis.Location = new Point(218, 67);
+            cmbJenis.Location = new Point(354, 107);
+            cmbJenis.Margin = new Padding(5, 5, 5, 5);
             cmbJenis.Name = "cmbJenis";
-            cmbJenis.Size = new Size(125, 28);
+            cmbJenis.Size = new Size(201, 40);
             cmbJenis.TabIndex = 5;
             cmbJenis.Text = "Jenis";
             // 
             // btnHapus
             // 
-            btnHapus.Location = new Point(464, 183);
+            btnHapus.Location = new Point(754, 293);
+            btnHapus.Margin = new Padding(5, 5, 5, 5);
             btnHapus.Name = "btnHapus";
-            btnHapus.Size = new Size(94, 29);
+            btnHapus.Size = new Size(153, 46);
             btnHapus.TabIndex = 7;
             btnHapus.Text = "HAPUS";
             btnHapus.UseVisualStyleBackColor = true;
@@ -95,9 +101,10 @@
             // 
             // btnEdit
             // 
-            btnEdit.Location = new Point(336, 183);
+            btnEdit.Location = new Point(546, 293);
+            btnEdit.Margin = new Padding(5, 5, 5, 5);
             btnEdit.Name = "btnEdit";
-            btnEdit.Size = new Size(94, 29);
+            btnEdit.Size = new Size(153, 46);
             btnEdit.TabIndex = 8;
             btnEdit.Text = "EDIT";
             btnEdit.UseVisualStyleBackColor = true;
@@ -105,9 +112,10 @@
             // 
             // btnSimpan
             // 
-            btnSimpan.Location = new Point(207, 183);
+            btnSimpan.Location = new Point(336, 293);
+            btnSimpan.Margin = new Padding(5, 5, 5, 5);
             btnSimpan.Name = "btnSimpan";
-            btnSimpan.Size = new Size(94, 29);
+            btnSimpan.Size = new Size(153, 46);
             btnSimpan.TabIndex = 9;
             btnSimpan.Text = "SIMPAN";
             btnSimpan.UseVisualStyleBackColor = true;
@@ -116,20 +124,21 @@
             // dgvLahan
             // 
             dgvLahan.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvLahan.Location = new Point(63, 231);
+            dgvLahan.Location = new Point(102, 370);
+            dgvLahan.Margin = new Padding(5, 5, 5, 5);
             dgvLahan.Name = "dgvLahan";
             dgvLahan.RowHeadersWidth = 51;
-            dgvLahan.Size = new Size(495, 188);
+            dgvLahan.Size = new Size(804, 301);
             dgvLahan.TabIndex = 10;
             dgvLahan.CellClick += dgvLahan_CellClick;
             // 
             // Lahan
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(626, 450);
+            ClientSize = new Size(1017, 720);
             Controls.Add(dgvLahan);
             Controls.Add(btnSimpan);
             Controls.Add(btnEdit);
@@ -141,6 +150,7 @@
             Controls.Add(txtLokasi);
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(5, 5, 5, 5);
             Name = "Lahan";
             Text = "Form1";
             Load += Lahan_Load;
@@ -156,9 +166,9 @@
         public TextBox txtLuas;
         public TextBox txtIdLahan;
         public ComboBox cmbJenis;
-        private Button btnHapus;
-        private Button btnEdit;
         private Button btnSimpan;
         public DataGridView dgvLahan;
+        public Button btnHapus;
+        public Button btnEdit;
     }
 }

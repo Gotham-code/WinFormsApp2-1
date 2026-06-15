@@ -49,6 +49,7 @@
             // 
             splitContainer1.Dock = DockStyle.Fill;
             splitContainer1.Location = new Point(0, 0);
+            splitContainer1.Margin = new Padding(5, 5, 5, 5);
             splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -68,8 +69,9 @@
             splitContainer1.Panel2.Controls.Add(panel1);
             splitContainer1.Panel2.Controls.Add(pictureBox1);
             splitContainer1.Panel2.Paint += splitContainer1_Panel2_Paint;
-            splitContainer1.Size = new Size(800, 450);
-            splitContainer1.SplitterDistance = 266;
+            splitContainer1.Size = new Size(1300, 720);
+            splitContainer1.SplitterDistance = 432;
+            splitContainer1.SplitterWidth = 6;
             splitContainer1.TabIndex = 0;
             // 
             // btnLogout
@@ -79,9 +81,10 @@
             btnLogout.FlatStyle = FlatStyle.Flat;
             btnLogout.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
             btnLogout.ForeColor = Color.White;
-            btnLogout.Location = new Point(35, 385);
+            btnLogout.Location = new Point(57, 616);
+            btnLogout.Margin = new Padding(5, 5, 5, 5);
             btnLogout.Name = "btnLogout";
-            btnLogout.Size = new Size(190, 40);
+            btnLogout.Size = new Size(309, 64);
             btnLogout.TabIndex = 4;
             btnLogout.Text = "Logout";
             btnLogout.UseVisualStyleBackColor = false;
@@ -89,15 +92,15 @@
             // 
             // btnRiwayat
             // 
-            btnRiwayat.Anchor = AnchorStyles.Top | AnchorStyles.Left;
             btnRiwayat.BackColor = Color.Transparent;
             btnRiwayat.FlatStyle = FlatStyle.Flat;
             btnRiwayat.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
             btnRiwayat.ForeColor = Color.White;
             btnRiwayat.ImageAlign = ContentAlignment.MiddleLeft;
-            btnRiwayat.Location = new Point(35, 275);
+            btnRiwayat.Location = new Point(57, 440);
+            btnRiwayat.Margin = new Padding(5, 5, 5, 5);
             btnRiwayat.Name = "btnRiwayat";
-            btnRiwayat.Size = new Size(190, 45);
+            btnRiwayat.Size = new Size(309, 72);
             btnRiwayat.TabIndex = 3;
             btnRiwayat.Text = "   Riwayat Monitoring";
             btnRiwayat.TextAlign = ContentAlignment.MiddleLeft;
@@ -106,15 +109,15 @@
             // 
             // btnInputMonitoring
             // 
-            btnInputMonitoring.Anchor = AnchorStyles.Top | AnchorStyles.Left;
             btnInputMonitoring.BackColor = Color.Transparent;
             btnInputMonitoring.FlatStyle = FlatStyle.Flat;
             btnInputMonitoring.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
             btnInputMonitoring.ForeColor = Color.White;
             btnInputMonitoring.ImageAlign = ContentAlignment.MiddleLeft;
-            btnInputMonitoring.Location = new Point(35, 220);
+            btnInputMonitoring.Location = new Point(57, 352);
+            btnInputMonitoring.Margin = new Padding(5, 5, 5, 5);
             btnInputMonitoring.Name = "btnInputMonitoring";
-            btnInputMonitoring.Size = new Size(190, 45);
+            btnInputMonitoring.Size = new Size(309, 72);
             btnInputMonitoring.TabIndex = 2;
             btnInputMonitoring.Text = "   Input Monitoring";
             btnInputMonitoring.TextAlign = ContentAlignment.MiddleLeft;
@@ -123,15 +126,15 @@
             // 
             // btnDashboard
             // 
-            btnDashboard.Anchor = AnchorStyles.Top | AnchorStyles.Left;
             btnDashboard.BackColor = Color.Transparent;
             btnDashboard.FlatStyle = FlatStyle.Flat;
             btnDashboard.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
             btnDashboard.ForeColor = Color.White;
             btnDashboard.ImageAlign = ContentAlignment.MiddleLeft;
-            btnDashboard.Location = new Point(35, 165);
+            btnDashboard.Location = new Point(57, 264);
+            btnDashboard.Margin = new Padding(5, 5, 5, 5);
             btnDashboard.Name = "btnDashboard";
-            btnDashboard.Size = new Size(190, 45);
+            btnDashboard.Size = new Size(309, 72);
             btnDashboard.TabIndex = 1;
             btnDashboard.Text = "   Dashboard";
             btnDashboard.TextAlign = ContentAlignment.MiddleLeft;
@@ -141,17 +144,19 @@
             // panel1
             // 
             panel1.Controls.Add(label1);
-            panel1.Location = new Point(57, 226);
+            panel1.Location = new Point(27, 352);
+            panel1.Margin = new Padding(5, 5, 5, 5);
             panel1.Name = "panel1";
-            panel1.Size = new Size(417, 183);
+            panel1.Size = new Size(620, 270);
             panel1.TabIndex = 4;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(15, 16);
+            label1.Location = new Point(24, 26);
+            label1.Margin = new Padding(5, 0, 5, 0);
             label1.Name = "label1";
-            label1.Size = new Size(135, 20);
+            label1.Size = new Size(217, 32);
             label1.TabIndex = 0;
             label1.Text = "Monitoring Hari Ini";
             // 
@@ -160,20 +165,22 @@
             pictureBox1.BackColor = Color.Transparent;
             pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
             pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox1.Location = new Point(103, 42);
+            pictureBox1.Location = new Point(27, 49);
+            pictureBox1.Margin = new Padding(5, 5, 5, 5);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(332, 116);
+            pictureBox1.Size = new Size(620, 186);
             pictureBox1.TabIndex = 3;
             pictureBox1.TabStop = false;
             // 
             // DashboardPetugas
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1300, 720);
             Controls.Add(splitContainer1);
             DoubleBuffered = true;
+            Margin = new Padding(5, 5, 5, 5);
             Name = "DashboardPetugas";
             Text = "Form1";
             Load += DashboardPetugas_Load;

@@ -35,27 +35,33 @@ namespace WinFormsApp2.UserController
         {
             try
             {
-                if (view.txtNamaTanaman == null || view.txtVarietas == null ||
-                    view.cboKomoditas == null || view.dtpTanggalTanam == null)
+                if (view.txtIdTanaman == null || view.txtNamaTanaman == null || view.txtVarietas == null ||
+                    view.cboKomoditas == null)
                 {
                     MessageBox.Show("Komponen UI gagal dimuat!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                if (string.IsNullOrWhiteSpace(view.txtNamaTanaman.Text) ||
+                if (string.IsNullOrWhiteSpace(view.txtIdTanaman.Text) ||
+                    string.IsNullOrWhiteSpace(view.txtNamaTanaman.Text) ||
                     string.IsNullOrWhiteSpace(view.txtVarietas.Text) ||
                     view.cboKomoditas.SelectedItem == null)
                 {
-                    MessageBox.Show("Kolom input wajib diisi!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("ID Tanaman, Nama tanaman, varietas, dan jenis komoditas wajib diisi!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
+                if (!int.TryParse(view.txtIdTanaman.Text.Trim(), out int id) || id <= 0)
+                {
+                    MessageBox.Show("ID Tanaman harus berupa angka positif!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                model.IdTanaman = id;
                 model.NamaTanaman = view.txtNamaTanaman.Text.Trim();
                 model.Varietas = view.txtVarietas.Text.Trim();
-                model.TanggalTanam = view.dtpTanggalTanam.Value;
+                model.TanggalTanam = null;
                 model.JenisKomoditas = view.cboKomoditas.SelectedItem?.ToString() ?? "";
-
-                // Mengisi umur default/formal karena di UI halaman 7 tidak ada input umur
                 model.UmurTanaman = 0;
 
                 model.InsertTanaman();
@@ -75,18 +81,26 @@ namespace WinFormsApp2.UserController
             try
             {
                 if (view.txtIdTanaman == null || view.txtNamaTanaman == null ||
-                    view.txtVarietas == null || view.cboKomoditas == null || view.dtpTanggalTanam == null) return;
+                    view.txtVarietas == null || view.cboKomoditas == null) return;
 
-                if (string.IsNullOrWhiteSpace(view.txtIdTanaman.Text))
+                if (view.txtIdTanaman.Tag == null || !int.TryParse(view.txtIdTanaman.Tag?.ToString() ?? "0", out int id) || id <= 0)
                 {
                     MessageBox.Show("Pilih data tanaman terlebih dahulu dari tabel!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                model.IdTanaman = Convert.ToInt32(view.txtIdTanaman.Text);
+                if (string.IsNullOrWhiteSpace(view.txtNamaTanaman.Text) ||
+                    string.IsNullOrWhiteSpace(view.txtVarietas.Text) ||
+                    view.cboKomoditas.SelectedItem == null)
+                {
+                    MessageBox.Show("Nama tanaman, varietas, dan jenis komoditas wajib diisi!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                model.IdTanaman = id;
                 model.NamaTanaman = view.txtNamaTanaman.Text.Trim();
                 model.Varietas = view.txtVarietas.Text.Trim();
-                model.TanggalTanam = view.dtpTanggalTanam.Value;
+                model.TanggalTanam = null;
                 model.JenisKomoditas = view.cboKomoditas.SelectedItem?.ToString() ?? "";
                 model.UmurTanaman = 0;
 
@@ -108,13 +122,12 @@ namespace WinFormsApp2.UserController
             {
                 if (view.txtIdTanaman == null) return;
 
-                if (string.IsNullOrWhiteSpace(view.txtIdTanaman.Text))
+                if (view.txtIdTanaman.Tag == null || !int.TryParse(view.txtIdTanaman.Tag?.ToString() ?? "0", out int id) || id <= 0)
                 {
                     MessageBox.Show("Pilih data yang ingin dihapus!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                int id = Convert.ToInt32(view.txtIdTanaman.Text);
                 var konfirmasi = MessageBox.Show("Apakah Anda yakin menghapus data ini?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                 if (konfirmasi == DialogResult.Yes)
