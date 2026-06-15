@@ -28,6 +28,7 @@ namespace MonitoringKopiKakao.Controller
                 MessageBox.Show("Gagal memuat data lahan: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        //yudha yudha
 
         public void Simpan()
         {
