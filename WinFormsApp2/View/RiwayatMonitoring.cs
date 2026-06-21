@@ -36,7 +36,7 @@ namespace WinFormsApp2.View
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // keep default empty or use to show details
+           
         }
 
         private void button1_Click(object sender, EventArgs e)

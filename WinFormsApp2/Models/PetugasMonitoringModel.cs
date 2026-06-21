@@ -25,7 +25,7 @@ namespace MonitoringKopiKakao.Model
 
         public void InsertPetugas()
         {
-            // INSERT ID Petugas secara eksplisit dari input user
+            
             string queryUser = "INSERT INTO users (id_user, username, password) VALUES (@id, @user, @pass)";
             string queryPetugas = "INSERT INTO petugas_monitoring (id_user, nama) VALUES (@id, @nama)";
 
@@ -73,7 +73,7 @@ namespace MonitoringKopiKakao.Model
 
         public void DeletePetugas(int id)
         {
-            // Karena menggunakan ON DELETE CASCADE, menghapus dari users otomatis menghapus di petugas_monitoring
+            
             string query = "DELETE FROM users WHERE id_user = @id";
             using (NpgsqlCommand cmd = new NpgsqlCommand(query))
             {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
-using WinFormsApp2.Models; // Hubungkan ke namespace Models baru
-using WinFormsApp2.View;   // Hubungkan ke namespace View baru
+using WinFormsApp2.Models; 
+using WinFormsApp2.View;   
 
 namespace WinFormsApp2.UserController
 {

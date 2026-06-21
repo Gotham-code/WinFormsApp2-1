@@ -9,7 +9,7 @@ namespace WinFormsApp2
 {
     public partial class LoginForm : Form
     {
-        // Deklarasikan objek 'db' untuk koneksi database
+        
         private DatabaseConfig db = new DatabaseConfig();
 
         public LoginForm()
@@ -19,11 +19,11 @@ namespace WinFormsApp2
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // Mengambil teks yang diketik user di TextBox
+            
             string username = txtUsername.Text.Trim();
             string password = txtPassword.Text.Trim();
 
-            // Validasi sederhana jika field kosong
+        
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
                 MessageBox.Show("Username dan Password tidak boleh kosong!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -34,7 +34,7 @@ namespace WinFormsApp2
             {
                 using (var conn = db.GetConnection())
                 {
-                    // Pertama: cek apakah username ada
+                   
                     using (var cmd = new NpgsqlCommand("SELECT id_user, password FROM users WHERE username = @user", conn))
                     {
                         cmd.Parameters.AddWithValue("@user", username);
@@ -53,12 +53,12 @@ namespace WinFormsApp2
 
                             if (dbPassword != password)
                             {
-                                // Password beda
+                                
                                 MessageBox.Show("Password salah.", "Login Gagal", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
 
-                            // Jika username & password cocok, ambil role dan nama
+                            
                             using (var cmdRole = new NpgsqlCommand(@"SELECT 
                                         CASE WHEN a.id_user IS NOT NULL THEN 'Admin' WHEN p.id_user IS NOT NULL THEN 'Petugas' ELSE 'Unknown' END AS role,
                                         COALESCE(a.nama, p.nama) AS nama_lengkap
@@ -119,7 +119,7 @@ namespace WinFormsApp2
         }
     }
 
-    // Class Session langsung berada di sini agar bisa diakses oleh LoginForm dan Form lainnya nanti
+
     public static class Session
     {
         public static int IdUser { get; set; }

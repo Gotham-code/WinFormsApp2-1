@@ -36,7 +36,7 @@ namespace WinFormsApp2.UserController
                 var dt = model.GetAllMonitoring();
                 if (dt == null) dt = new DataTable();
 
-                // Apply basic filtering in-memory
+               
                 DataView dv = new DataView(dt);
                 string filter = "";
                 if (!string.IsNullOrWhiteSpace(namaPetugas))
@@ -51,7 +51,7 @@ namespace WinFormsApp2.UserController
                 if (tanggal.HasValue)
                 {
                     if (!string.IsNullOrEmpty(filter)) filter += " AND ";
-                    // compare date part only
+                    
                     filter += $"CONVERT(varchar, TANGGAL, 23) = '" + tanggal.Value.ToString("yyyy-MM-dd") + "'";
                 }
 

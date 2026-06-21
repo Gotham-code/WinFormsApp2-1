@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using WinFormsApp2.UserController; // Hubungkan ke nama folder controller Anda
+using WinFormsApp2.UserController; 
 
 namespace WinFormsApp2.View
 {
@@ -26,19 +26,19 @@ namespace WinFormsApp2.View
             controller.Simpan();
         }
 
-        // Tombol EDIT/UBAH (Sesuaikan button dengan double click tombol EDIT di UI Anda)
+        
         private void button2_Click(object sender, EventArgs e)
         {
             controller.Ubah();
         }
 
-        // Tombol HAPUS (Sesuaikan button dengan double click tombol HAPUS di UI Anda)
+       
         private void button4_Click(object sender, EventArgs e)
         {
             controller.Hapus();
         }
 
-        // Tombol RESET (Sesuaikan button dengan double click tombol RESET di UI Anda)
+       
         private void button5_Click(object sender, EventArgs e)
         {
             ResetForm();
@@ -70,9 +70,8 @@ namespace WinFormsApp2.View
             {
                 DataGridViewRow row = dgvTanaman.Rows[e.RowIndex];
 
-                // Simpan ID asli di Tag untuk Update nanti
+               
                 txtIdTanaman.Tag = row.Cells["ID"].Value?.ToString() ?? "0";
-                // Tampilkan ID asli di field (read-only display)
                 txtIdTanaman.Text = $"ID: {row.Cells["ID"].Value}";
                 txtNamaTanaman.Text = row.Cells["Nama Tanaman"].Value?.ToString() ?? "";
                 txtVarietas.Text = row.Cells["Varietas"].Value?.ToString() ?? "";
@@ -84,7 +83,7 @@ namespace WinFormsApp2.View
             }
         }
 
-        // Metode penampung sisa agar tidak memicu error designer akibat text_changed lama
+       
         private void textBox1_TextChanged(object sender, EventArgs e) { }
         private void textBox2_TextChanged(object sender, EventArgs e) { }
         private void textBox3_TextChanged(object sender, EventArgs e) { }

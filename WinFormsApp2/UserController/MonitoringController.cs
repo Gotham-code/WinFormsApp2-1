@@ -162,13 +162,12 @@ namespace WinFormsApp2.UserController
                     model.IdTanaman = 0;
                 }
 
-                // Kondisi tanaman diambil dari comboBoxPetugas (labelnya 'Kondisi' di designer)
                 model.Kondisi = viewInput.comboBoxPetugas?.Text ?? string.Empty;
 
-                // Catatan diambil dari textBox2
+              
                 model.Catatan = viewInput.textBox2?.Text ?? string.Empty;
 
-                // Id user: gunakan Session jika ada, fallback ke comboBoxPetugas.SelectedValue jika itu berisi petugas
+                
                 if (WinFormsApp2.Session.IdUser > 0)
                     model.IdUser = WinFormsApp2.Session.IdUser;
                 else if (viewInput.comboBoxPetugas != null && viewInput.comboBoxPetugas.SelectedValue != null && int.TryParse(viewInput.comboBoxPetugas.SelectedValue.ToString(), out var idu))
@@ -176,7 +175,7 @@ namespace WinFormsApp2.UserController
                 else
                     model.IdUser = 0;
 
-                // Validasi: pastikan id_tanaman dan id_user valid untuk mencegah pelanggaran foreign key
+               
                 if (model.IdTanaman <= 0)
                 {
                     MessageBox.Show("Pilih tanaman yang valid sebelum menyimpan.", "Validasi", MessageBoxButtons.OK, MessageBoxIcon.Warning);

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using MonitoringKopiKakao.Model;
-using WinFormsApp2.View; // Sesuaikan dengan namespace folder View Anda
+using WinFormsApp2.View; 
 
 namespace MonitoringKopiKakao.Controller
 {
@@ -10,7 +10,7 @@ namespace MonitoringKopiKakao.Controller
         private Lahan view;
         private LahanModel model;
 
-        // Konstruktor untuk menghubungkan controller dengan form view aktif
+       
         public LahanController(Lahan view)
         {
             this.view = view;
@@ -28,7 +28,7 @@ namespace MonitoringKopiKakao.Controller
                 MessageBox.Show("Gagal memuat data lahan: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        //yudha yudha
+        
 
         public void Simpan()
         {

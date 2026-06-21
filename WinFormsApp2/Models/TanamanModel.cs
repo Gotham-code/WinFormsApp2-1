@@ -2,9 +2,7 @@
 using Npgsql;
 using System;
 using System.Data;
-// Jika DatabaseConfig Anda berada di folder Data atau Helpers, 
-// hilangkan tanda komentar (//) pada baris di bawah ini:
-// using WinFormsApp2.Data; 
+
 
 namespace WinFormsApp2.Models
 {
@@ -17,7 +15,7 @@ namespace WinFormsApp2.Models
         public DateTime? TanggalTanam { get; set; }
         public string JenisKomoditas { get; set; } = string.Empty;
 
-        // Pastikan class DatabaseConfig Anda sudah benar di dalam projek
+       
         private DatabaseConfig db = new DatabaseConfig();
 
         public DataTable GetAllTanaman()

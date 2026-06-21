@@ -1,6 +1,6 @@
 using System;
 using System.Windows.Forms;
-using WinFormsApp2.View; // Memastikan folder View terdeteksi
+using WinFormsApp2.View; 
 
 namespace WinFormsApp2
 {
@@ -11,9 +11,7 @@ namespace WinFormsApp2
             InitializeComponent();
         }
 
-        // =======================================================
-        // FUNGSI UTAMA: Memasukkan Form Anak ke Dalam SplitContainer Panel2
-        // =======================================================
+      
         private void PindahHalaman(Form formTujuan)
         {
 
@@ -30,9 +28,7 @@ namespace WinFormsApp2
             formTujuan.Show();
         }
 
-        // =======================================================
-        // EVENT HANDLER: Klik Tombol Menu Utama
-        // =======================================================
+      
 
 
         private void btnDashboard_Click(object sender, EventArgs e)
@@ -81,9 +77,7 @@ namespace WinFormsApp2
             this.Close();
         }
 
-        // =======================================================
-        //  Error Designer
-        // =======================================================
+   
 
 
         private void DashboardAdmin_Load(object sender, EventArgs e)

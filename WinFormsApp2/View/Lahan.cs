@@ -13,13 +13,13 @@ namespace WinFormsApp2.View
         public Lahan()
         {
             InitializeComponent();
-            // Menginisialisasi controller dengan melemparkan form ini (this)
+           
             controller = new LahanController(this);
         }
 
         private void Lahan_Load(object sender, EventArgs e)
         {
-            // Tambahkan pilihan jenis tanah jika masih kosong
+      
             if (cmbJenis.Items.Count == 0)
             {
                 cmbJenis.Items.Add("Tanah Liat");
@@ -66,7 +66,7 @@ namespace WinFormsApp2.View
             btnHapus.Enabled = false;
         }
 
-        // Event saat salah satu baris di Grid diklik oleh user
+    
         private void dgvLahan_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -78,7 +78,7 @@ namespace WinFormsApp2.View
                 txtLuas.Text = row.Cells["Luas (Ha)"].Value.ToString();
                 cmbJenis.SelectedItem = row.Cells["Jenis Tanah"].Value.ToString();
 
-                // Ubah status tombol pintas
+              
                 btnSimpan.Enabled = false;
                 btnEdit.Enabled = true;
                 btnHapus.Enabled = true;
