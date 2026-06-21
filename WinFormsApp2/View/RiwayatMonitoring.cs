@@ -29,11 +29,6 @@ namespace WinFormsApp2.View
             controller.TampilDataRiwayat();
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            controller.HapusFromRiwayat();
-        }
-
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             controller.TampilDataRiwayat();
@@ -42,6 +37,11 @@ namespace WinFormsApp2.View
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             // keep default empty or use to show details
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

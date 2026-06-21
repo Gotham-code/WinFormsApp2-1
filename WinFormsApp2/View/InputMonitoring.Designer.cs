@@ -41,12 +41,14 @@
             btnSave = new Button();
             btnEdit = new Button();
             btnReset = new Button();
+            textBox2 = new TextBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
+            panel1.Controls.Add(textBox2);
             panel1.Controls.Add(comboBox2);
             panel1.Controls.Add(comboBox1);
             panel1.Controls.Add(dateTimePicker1);
@@ -54,74 +56,68 @@
             panel1.Controls.Add(textBoxId);
             panel1.Controls.Add(comboBoxTanaman);
             panel1.Controls.Add(comboBoxPetugas);
-            panel1.Location = new Point(36, 40);
-            panel1.Margin = new Padding(5);
+            panel1.Location = new Point(22, 25);
             panel1.Name = "panel1";
-            panel1.Size = new Size(769, 207);
+            panel1.Size = new Size(473, 129);
             panel1.TabIndex = 0;
             // 
             // comboBox2
             // 
             comboBox2.Items.AddRange(new object[] { "Cerah", "Hujan" });
-            comboBox2.Location = new Point(509, 133);
-            comboBox2.Margin = new Padding(5);
+            comboBox2.Location = new Point(146, 59);
             comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(201, 40);
+            comboBox2.Size = new Size(125, 28);
             comboBox2.TabIndex = 10;
             comboBox2.Text = " Cuaca";
             // 
             // comboBox1
             // 
             comboBox1.Items.AddRange(new object[] { "Ulat", "Tidak Ada" });
-            comboBox1.Location = new Point(509, 35);
-            comboBox1.Margin = new Padding(5);
+            comboBox1.Location = new Point(147, 93);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(201, 40);
+            comboBox1.Size = new Size(125, 28);
             comboBox1.TabIndex = 9;
             comboBox1.Text = "Hama";
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.Location = new Point(26, 131);
+            dateTimePicker1.Location = new Point(16, 57);
+            dateTimePicker1.Margin = new Padding(2, 2, 2, 2);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(201, 39);
+            dateTimePicker1.Size = new Size(125, 27);
             dateTimePicker1.TabIndex = 8;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(26, 35);
-            textBox1.Margin = new Padding(5);
+            textBox1.Location = new Point(16, 22);
             textBox1.Name = "textBox1";
             textBox1.PlaceholderText = "Id Monitoring";
-            textBox1.Size = new Size(201, 39);
+            textBox1.Size = new Size(125, 27);
             textBox1.TabIndex = 0;
             // 
             // textBoxId
             // 
             textBoxId.Location = new Point(0, 0);
-            textBoxId.Margin = new Padding(5);
             textBoxId.Name = "textBoxId";
-            textBoxId.Size = new Size(14, 39);
+            textBoxId.Size = new Size(10, 27);
             textBoxId.TabIndex = 6;
             textBoxId.Visible = false;
             // 
             // comboBoxTanaman
             // 
             comboBoxTanaman.Items.AddRange(new object[] { "Kopi", "Kakao" });
-            comboBoxTanaman.Location = new Point(257, 35);
-            comboBoxTanaman.Margin = new Padding(5);
+            comboBoxTanaman.Location = new Point(16, 89);
             comboBoxTanaman.Name = "comboBoxTanaman";
-            comboBoxTanaman.Size = new Size(201, 40);
+            comboBoxTanaman.Size = new Size(125, 28);
             comboBoxTanaman.TabIndex = 6;
             comboBoxTanaman.Text = "Jenis tanaman";
             // 
             // comboBoxPetugas
             // 
             comboBoxPetugas.Items.AddRange(new object[] { "Sehat", "Layu" });
-            comboBoxPetugas.Location = new Point(257, 133);
-            comboBoxPetugas.Margin = new Padding(5);
+            comboBoxPetugas.Location = new Point(147, 22);
             comboBoxPetugas.Name = "comboBoxPetugas";
-            comboBoxPetugas.Size = new Size(201, 40);
+            comboBoxPetugas.Size = new Size(125, 28);
             comboBoxPetugas.TabIndex = 7;
             comboBoxPetugas.Text = "Kondisi";
             comboBoxPetugas.SelectedIndexChanged += comboBoxPetugas_SelectedIndexChanged;
@@ -129,19 +125,17 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(36, 352);
-            dataGridView1.Margin = new Padding(5);
+            dataGridView1.Location = new Point(22, 220);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(769, 319);
+            dataGridView1.Size = new Size(473, 199);
             dataGridView1.TabIndex = 1;
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(111, 276);
-            btnSave.Margin = new Padding(5);
+            btnSave.Location = new Point(68, 172);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(122, 48);
+            btnSave.Size = new Size(75, 30);
             btnSave.TabIndex = 0;
             btnSave.Text = "Simpan";
             btnSave.Click += btnSave_Click;
@@ -149,38 +143,43 @@
             // btnEdit
             // 
             btnEdit.Enabled = false;
-            btnEdit.Location = new Point(317, 276);
-            btnEdit.Margin = new Padding(5);
+            btnEdit.Location = new Point(195, 172);
             btnEdit.Name = "btnEdit";
-            btnEdit.Size = new Size(122, 48);
+            btnEdit.Size = new Size(75, 30);
             btnEdit.TabIndex = 1;
             btnEdit.Text = "Ubah";
             btnEdit.Click += btnEdit_Click;
             // 
             // btnReset
             // 
-            btnReset.Location = new Point(502, 276);
-            btnReset.Margin = new Padding(5);
+            btnReset.Location = new Point(309, 172);
             btnReset.Name = "btnReset";
-            btnReset.Size = new Size(122, 48);
+            btnReset.Size = new Size(75, 30);
             btnReset.TabIndex = 2;
             btnReset.Text = "Reset";
             btnReset.Click += btnReset_Click;
             // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(287, 23);
+            textBox2.Name = "textBox2";
+            textBox2.PlaceholderText = "catatan";
+            textBox2.Size = new Size(125, 27);
+            textBox2.TabIndex = 11;
+            // 
             // InputMonitoring
             // 
-            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(1300, 720);
+            ClientSize = new Size(800, 450);
             Controls.Add(btnSave);
             Controls.Add(btnEdit);
             Controls.Add(btnReset);
             Controls.Add(dataGridView1);
             Controls.Add(panel1);
             DoubleBuffered = true;
-            Margin = new Padding(5);
             Name = "InputMonitoring";
             Text = "Monitoring";
             panel1.ResumeLayout(false);
@@ -203,5 +202,6 @@
         public ComboBox comboBox2;
         public ComboBox comboBox1;
         public DateTimePicker dateTimePicker1;
+        public TextBox textBox2;
     }
 }

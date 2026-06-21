@@ -1,4 +1,4 @@
-﻿namespace WinFormsApp2.View
+﻿    namespace WinFormsApp2.View
 {
     partial class Laporan
     {
@@ -32,7 +32,6 @@
             txtPetugas = new TextBox();
             cmbJenis = new ComboBox();
             btnTampilkanLaporan = new Button();
-            btnPetugas = new Button();
             dgvLaporan = new DataGridView();
             dateTimePicker1 = new DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)dgvLaporan).BeginInit();
@@ -68,15 +67,6 @@
             btnTampilkanLaporan.Text = "TAMPILKAN  LAPORAN";
             btnTampilkanLaporan.UseVisualStyleBackColor = true;
             // 
-            // btnPetugas
-            // 
-            btnPetugas.Location = new Point(556, 251);
-            btnPetugas.Margin = new Padding(5, 5, 5, 5);
-            btnPetugas.Name = "btnPetugas";
-            btnPetugas.Size = new Size(262, 46);
-            btnPetugas.TabIndex = 6;
-            btnPetugas.Text = "CETAK LAPORAN";
-            btnPetugas.UseVisualStyleBackColor = true;
             // 
             // dgvLaporan
             // 
@@ -105,7 +95,6 @@
             ClientSize = new Size(1027, 720);
             Controls.Add(dateTimePicker1);
             Controls.Add(dgvLaporan);
-            Controls.Add(btnPetugas);
             Controls.Add(btnTampilkanLaporan);
             Controls.Add(cmbJenis);
             Controls.Add(txtPetugas);
@@ -125,8 +114,7 @@
         private Button button1;
         private Button button2;
         private Button btnTampilkanLaporan;
-        private Button btnPetugas;
-        private DataGridView dgvLaporan;
+        public DataGridView dgvLaporan;
         private DateTimePicker periodeawal;
         private DateTimePicker dateTimePicker1;
     }

@@ -44,9 +44,34 @@ namespace WinFormsApp2.UserController
             try
             {
                 var dtTanaman = model.GetTanamanList();
-                if (dtTanaman != null && viewInput.comboBoxTanaman != null)
+                if (viewInput.comboBoxTanaman != null)
                 {
-                    if (dtTanaman.Rows.Count > 0)
+                    // Defensive: if database returns valid tanaman rows use them; otherwise fall back
+                    // to the two expected items (Kopi, Kakao) to avoid showing petugas names here.
+                    bool useFallback = true;
+                    if (dtTanaman != null && dtTanaman.Rows.Count > 0)
+                    {
+                        // check if the returned rows look like tanaman (contain expected columns)
+                        try
+                        {
+                            foreach (DataRow r in dtTanaman.Rows)
+                            {
+                                var name = r["nama_tanaman"]?.ToString() ?? "";
+                                if (!string.IsNullOrWhiteSpace(name))
+                                {
+                                    // if any row looks like a plant name, consider it valid
+                                    useFallback = false;
+                                    break;
+                                }
+                            }
+                        }
+                        catch
+                        {
+                            useFallback = true;
+                        }
+                    }
+
+                    if (!useFallback)
                     {
                         viewInput.comboBoxTanaman.DisplayMember = "nama_tanaman";
                         viewInput.comboBoxTanaman.ValueMember = "id_tanaman";
@@ -55,21 +80,24 @@ namespace WinFormsApp2.UserController
                         if (viewInput.comboBoxTanaman.Items.Count > 0)
                             viewInput.comboBoxTanaman.SelectedIndex = 0;
                     }
-                }
-
-                var dtPetugas = model.GetPetugasList();
-                if (dtPetugas != null && viewInput.comboBoxPetugas != null)
-                {
-                    if (dtPetugas.Rows.Count > 0)
+                    else
                     {
-                        viewInput.comboBoxPetugas.DisplayMember = "nama";
-                        viewInput.comboBoxPetugas.ValueMember = "id_user";
-                        viewInput.comboBoxPetugas.DataSource = dtPetugas;
-                        viewInput.comboBoxPetugas.DropDownStyle = ComboBoxStyle.DropDownList;
-                        if (viewInput.comboBoxPetugas.Items.Count > 0)
-                            viewInput.comboBoxPetugas.SelectedIndex = 0;
+                        // fallback to static choices
+                        viewInput.comboBoxTanaman.DataSource = null;
+                        viewInput.comboBoxTanaman.Items.Clear();
+                        viewInput.comboBoxTanaman.Items.AddRange(new object[] { "Kopi", "Kakao" });
+                        viewInput.comboBoxTanaman.DropDownStyle = ComboBoxStyle.DropDownList;
+                        if (viewInput.comboBoxTanaman.Items.Count > 0)
+                            viewInput.comboBoxTanaman.SelectedIndex = 0;
                     }
                 }
+
+                // NOTE: comboBoxPetugas on the InputMonitoring form is used as the "Kondisi" selector
+                // (values: Sehat, Layu). Do NOT load the petugas (user) list into that combobox or it
+                // will overwrite the kondisi options. The IdUser for an input should come from the
+                // current Session (when a petugas is logged in). If you need a selectable petugas
+                // list in the form, add a dedicated ComboBox (e.g. comboBoxPetugasUser) to the form
+                // and load model.GetPetugasList() into that control instead.
             }
             catch (Exception ex)
             {
@@ -137,8 +165,8 @@ namespace WinFormsApp2.UserController
                 // Kondisi tanaman diambil dari comboBoxPetugas (labelnya 'Kondisi' di designer)
                 model.Kondisi = viewInput.comboBoxPetugas?.Text ?? string.Empty;
 
-                // Gunakan comboBox2 sebagai catatan/cuaca
-                model.Cuaca = viewInput.comboBox2?.Text ?? string.Empty;
+                // Catatan diambil dari textBox2
+                model.Catatan = viewInput.textBox2?.Text ?? string.Empty;
 
                 // Id user: gunakan Session jika ada, fallback ke comboBoxPetugas.SelectedValue jika itu berisi petugas
                 if (WinFormsApp2.Session.IdUser > 0)

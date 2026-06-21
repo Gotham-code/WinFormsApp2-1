@@ -41,9 +41,11 @@ namespace WinFormsApp2.View
         {
             // clear inputs
             textBox1?.Clear();
-           
+            textBox2?.Clear();
             comboBoxTanaman?.SelectedIndex = -1;
             comboBoxPetugas?.SelectedIndex = -1;
+            comboBox1?.SelectedIndex = -1;
+            comboBox2?.SelectedIndex = -1;
             btnEdit.Enabled = false;
             btnSave.Enabled = true;
         }
