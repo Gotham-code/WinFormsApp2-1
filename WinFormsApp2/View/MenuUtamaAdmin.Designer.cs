@@ -54,6 +54,10 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(203, 122);
             textBox1.TabIndex = 5;
+            textBox1.Font = new Font("Arial", 48, FontStyle.Bold);
+            textBox1.TextAlign = HorizontalAlignment.Center;
+            textBox1.ReadOnly = true;
+            textBox1.BorderStyle = BorderStyle.None;
             // 
             // textBox2
             // 
@@ -62,6 +66,10 @@
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(212, 122);
             textBox2.TabIndex = 6;
+            textBox2.Font = new Font("Arial", 48, FontStyle.Bold);
+            textBox2.TextAlign = HorizontalAlignment.Center;
+            textBox2.ReadOnly = true;
+            textBox2.BorderStyle = BorderStyle.None;
             // 
             // label1
             // 

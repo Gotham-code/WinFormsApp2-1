@@ -15,6 +15,12 @@ namespace WinFormsApp2.View
             InitializeComponent();
         }
 
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            lblMonitoringCount.Text = "5";
+        }
+
         private void label1_Click(object sender, EventArgs e)
         {
 

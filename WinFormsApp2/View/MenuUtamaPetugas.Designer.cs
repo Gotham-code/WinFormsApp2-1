@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuUtamaPetugas));
             pictureBox1 = new PictureBox();
             panel1 = new Panel();
+            lblMonitoringCount = new Label();
             label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
@@ -50,12 +51,24 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(lblMonitoringCount);
             panel1.Controls.Add(label1);
             panel1.Location = new Point(56, 361);
             panel1.Margin = new Padding(5, 5, 5, 5);
             panel1.Name = "panel1";
-            panel1.Size = new Size(678, 293);
+            panel1.Size = new Size(1188, 293);
             panel1.TabIndex = 2;
+            // 
+            // lblMonitoringCount
+            // 
+            lblMonitoringCount.AutoSize = false;
+            lblMonitoringCount.Location = new Point(24, 80);
+            lblMonitoringCount.Name = "lblMonitoringCount";
+            lblMonitoringCount.Size = new Size(400, 150);
+            lblMonitoringCount.TabIndex = 1;
+            lblMonitoringCount.Text = "5";
+            lblMonitoringCount.Font = new Font("Arial", 96, FontStyle.Bold);
+            lblMonitoringCount.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label1
             // 
@@ -92,5 +105,6 @@
         private PictureBox pictureBox1;
         private Panel panel1;
         private Label label1;
+        private Label lblMonitoringCount;
     }
 }
